@@ -27,9 +27,17 @@ O Simple Blog é uma aplicação criado com codeigniter 4, permite o CRUD de not
 ```bash
 git clone https://github.com/rafinhaa/simple-blog.git
 cd simple-blog
+```
+
+#### Install dependencies
+```bash
 composer install
 ```
 
+#### Execute migrations
+```bash
+php spark migrate
+```
 
 ## ℹ️ Info
 #### Credentials
@@ -37,6 +45,9 @@ composer install
 - Senha:   password
 
 ## 📄 Changelog
+##### v0.0.2
+- Create migration news
+- Create controller pages
 ##### v0.0.1
 - Update README.md
 
