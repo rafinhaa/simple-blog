@@ -45,9 +45,16 @@ php spark migrate
 - Senha:   password
 
 ## 📄 Changelog
+##### v0.0.3
+- Create controller pages
+- Edited migrations table news to posts
+- Create folder posts in views
+- Create in folder posts overview.php and view.php
 ##### v0.0.2
 - Create migration news
 - Create controller pages
+- Create folder templates in views
+- Create footer.php and header.php in templates
 ##### v0.0.1
 - Update README.md
 

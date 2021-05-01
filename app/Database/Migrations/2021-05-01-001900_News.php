@@ -40,11 +40,11 @@ class News extends Migration
 			]
 		]);
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('news');
+		$this->forge->createTable('posts');
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('news');
+		$this->forge->dropTable('posts');
 	}
 }
