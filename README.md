@@ -46,13 +46,14 @@ php spark migrate
 
 ## 📄 Changelog
 ##### v0.0.3
-- Create controller pages
+- Create controller posts
+- Create model PostsModel
 - Edited migrations table news to posts
 - Create folder posts in views
 - Create in folder posts overview.php and view.php
 ##### v0.0.2
 - Create migration news
-- Create controller pages
+- Create controller Pages
 - Create folder templates in views
 - Create footer.php and header.php in templates
 ##### v0.0.1

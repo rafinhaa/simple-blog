@@ -1,15 +1,13 @@
 <h2><?= esc($titlepage) ?></h2>
-
+<div class="row my-3">
+    <a class="btn btn-primary" href="<?= base_url('/posts/create') ?>">Criar Post</a>
+</div>
 <table class="table">
     <tr>
         <td>Titulo</td>
         <td>Acão</td>
     </tr>
-    <?php
-
-    use Faker\Provider\Base;
-
-if (! empty($posts) && is_array($posts)) : ?>
+    <?php if (! empty($posts) && is_array($posts)) : ?>
         <?php foreach ($posts as $posts_item): ?>
             <tr>
                 <td>
