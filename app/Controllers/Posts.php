@@ -6,13 +6,20 @@ use App\Models\PostsModel;
 
 class Posts extends Controller
 {
+
+	/**
+	 * Instance of the main Request object.
+	 *
+	 * @var HTTP\IncomingRequest
+	 */
+	protected $request;
+
 	public function index()
 	{
 		$model = new PostsModel();
         $data = [
 			'posts' => $model->getPosts(),
 			'title' => 'SimpleBlog',
-			'titlepage' => 'Últimas Postagens',
 		];
 	
 		echo view('templates/header',$data);
@@ -31,46 +38,28 @@ class Posts extends Controller
 		}
 	
 		$data['title'] = 'SimpleBlog';
-		$data['titlepage'] = $data['posts']['title'];
 	
 		echo view('templates/header', $data);
 		echo view('posts/view', $data);
 		echo view('templates/footer', $data);
 	}
 	public function create(){
-			/**$model = new PostsModel();
-		
-			if ($this->request->getMethod() === 'post' && $this->validate([
-				'title' => 'required|min_length[3]|max_length[255]',
-				'body'  => 'required',
-			]))
-		{
-			$model->save([
-				'title' => $this->request->getPost('title'),
-				'slug'  => url_title($this->request->getPost('title'), '-', TRUE),
-				'body'  => $this->request->getPost('body'),
-			]);
-			//echo view('news/success');
-		}
-		else
-		{*/
-			$data = [
-				'title' => 'Create a news item',
-				'titlepage' => 'Create a news item',
-			];
-			echo view('templates/header', $data);
-			echo view('posts/form');
-			echo view('templates/footer');
-		//}
+		helper('form');
+		$data = [
+			'title' => 'Create a news item',
+		];
+		echo view('templates/header', $data);
+		echo view('posts/form');
+		echo view('templates/footer');
 	}
 
 	public function store(){
-		//helper('form');
+		helper('form');
 		$model = new PostsModel();
 
 		$data = [
 			'title' => 'Create a news item',
-			'titlepage' => 'Create a news item',
+			'info' => 'Post salvo com sucesso.',
 		];
 
 		$rules = [
@@ -93,5 +82,37 @@ class Posts extends Controller
 			echo view('posts/form');
 			echo view('templates/footer');
 		}
+	}
+	public function edit($slug = null)
+	{
+		helper('form');
+		$model = new PostsModel();
+		$data = [
+			'post' => $model->getPosts($slug),
+		];
+		if(empty($data['post'])){
+			throw new \CodeIgniter\Exceptions\PageNotFoundException('Não consegui encontrar esse post');
+		}
+		$data = [			
+			'title' => 'SimpleBlog',
+			'titlepost' => $data['post']['title'],
+			'id' => $data['post']['id'],
+			'body' => $data['post']['body'],
+		];
+		echo view('templates/header',$data);
+		echo view('posts/form');
+		echo view('templates/footer');
+	}
+	public function delete($slug = null)
+	{		
+		$model = new PostsModel();
+		$model->where('slug', $slug)->delete();
+		$data = [			
+			'title' => 'SimpleBlog',
+			'info' => 'Post deletado com sucesso.',
+		];
+		echo view('templates/header',$data);
+		echo view('posts/success');
+		echo view('templates/footer');
 	}
 }

@@ -1,4 +1,4 @@
-<h2><?= esc($titlepage) ?></h2>
+<h2>Posts</h2>
 <div class="row my-3">
     <a class="btn btn-primary" href="<?= base_url('/posts/create') ?>">Criar Post</a>
 </div>

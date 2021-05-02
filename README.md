@@ -45,6 +45,11 @@ php spark migrate
 - Senha:   password
 
 ## 📄 Changelog
+##### v0.0.5
+- Create methods edit and delete in controller Posts
+##### v0.0.4
+- Create in folder posts form.php and succes.php
+- Create methods create and store in controller Posts
 ##### v0.0.3
 - Create controller posts
 - Create model PostsModel
