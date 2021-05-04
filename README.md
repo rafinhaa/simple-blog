@@ -42,6 +42,8 @@ php spark migrate
 - Senha:   password
 
 ## 📄 Changelog
+##### v0.0.6
+- Update README.md
 ##### v0.0.5
 - Create methods edit and delete in controller Posts
 ##### v0.0.4
