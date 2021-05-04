@@ -1,7 +1,4 @@
 <h4 align="center">
-    <h1 align="center">
-      <img alt="Eshop." title="Eshop." src="/docs/images/logo.png" />
-    </h1>
     <br><br>
     <p align="center">
       <a href="#-about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -65,6 +62,6 @@ php spark migrate
 - Update README.md
 
 ## 📝 License
-[MIT](LICENSE.txt)
+[MIT](LICENSE)
 
 **Free Software, Hell Yeah!**
