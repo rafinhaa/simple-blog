@@ -42,6 +42,17 @@ php spark migrate
 - Senha:   password
 
 ## 📄 Changelog
+##### v0.0.7
+- Downloaded AdminLTE files
+- Create folder adminlte in /public and extract content
+- Create folder plugins in /public and extract content
+- Create folder admin in View
+- Create folder posts in view/admin
+- Create View create in View/admin/posts
+- Create file template.php with content AdminLTE in Views/admin/posts
+- Create folder Admin in Controller
+- Create Controller Dashboard in Controller/Admin
+- Moved Controller Posts to Controller/Admin
 ##### v0.0.6
 - Update README.md
 ##### v0.0.5
