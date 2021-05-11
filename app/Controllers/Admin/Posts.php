@@ -16,15 +16,20 @@ class Posts extends BaseController
 
 	public function index()
 	{
-		$model = new PostsModel();
+		$postsModel  = new \App\Models\PostsModel();
         $data = [
-			'posts' => $model->getPosts(),
-			'title' => 'SimpleBlog',
+			'titlepage' => 'Todos os posts',
+			'posts' => $postsModel->getPosts(),
+			'view' => 'admin/posts/index',
+			'css' => [
+				'DataTables' => 'datatable/datatables.css',
+			],
+			'scripts' => [
+				'DataTables' => 'datatable/datatables.js',
+				'DataTables Default' => 'datatable/default-datatable.js',
+			],
 		];
-	
-		echo view('templates/header',$data);
-		echo view('posts/overview', $data);
-		echo view('templates/footer', $data);
+		return view('admin/template', $data);
 	}
 	public function view($slug = NULL)
 	{
@@ -46,7 +51,7 @@ class Posts extends BaseController
 	public function create(){
 		helper('form');
 		$data = [
-			'title' => 'Novo Post',
+			'titlepage' => 'Adicionar novo',
 			'view' => 'admin/posts/create',
 		];
 		echo view('admin/template', $data);
@@ -54,18 +59,57 @@ class Posts extends BaseController
 
 	public function store(){
 		helper('form');
-		$model = new PostsModel();
-
 		$data = [
 			'title' => 'Create a news item',
 			'info' => 'Post salvo com sucesso.',
 		];
 
-		$rules = [
-			'title' => 'required|min_length[3]|max_length[255]',
-			'body' => 'required',
-		];
+		$validation = $this->validate([
+            'title' => [
+                'rules' => 'required|min_length[3]|max_length[255]',
+                'errors' => [
+                    'required' => 'O título é necessário',
+                    'min_length' => 'O título está muito pequeno',
+                    'max_length' => 'O título está grande demais',
+                ],
+            ],
+            'body' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'O corpo da postagem é necessário',
+                ],                
+            ],
+        ]);
 
+		if(!$validation){
+			$data = [
+				'titlepage' => 'Adicionar novo',
+				'validation'=> $this->validator,
+				'view' => 'admin/posts/create',
+			];
+			return view('admin/template', $data);
+        }else{
+			$id = $this->request->getpost('id');
+            $title = $this->request->getpost('title');
+            $body = $this->request->getpost('body');
+			//columns in db
+            $values = [
+                'id' => $id,
+                'title' => $title,
+                'body' => $body,
+				'slug' => url_title($this->request->getPost('title'), '-', TRUE),
+            ];
+			$postsModel  = new \App\Models\PostsModel();
+			$query = $postsModel->save($values);
+			if(!$query){
+                return redirect()->back()->with('fail','something went wrong');
+                //return redirect()->to('register')->with('fail','something went wrong');
+            }else{
+                //redirect to posts page
+                return redirect()->to('/admin/posts')->with('success','Post salvo com sucesso!');
+            }
+        }
+/*
 		if($this->validate($rules)){
 			$model->save([
 				'id' => $this->request->getPost('id'),
@@ -80,7 +124,7 @@ class Posts extends BaseController
 			echo view('templates/header',$data);
 			echo view('posts/form');
 			echo view('templates/footer');
-		}
+		}*/
 	}
 	public function edit($slug = null)
 	{
