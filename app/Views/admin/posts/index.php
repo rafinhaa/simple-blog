@@ -3,6 +3,11 @@
 		<div class="card">
 			<div class="card-header">
 				<h3 class="card-title">Essa são todas as suas postagens</h3>
+				<div class="card-tools">
+					<!-- Buttons, labels, and many other things can be placed here! -->
+					<!-- Here is a label for example -->
+					<a href="<?= base_url('/admin/posts/create') ?>" class="btn btn-block btn-success btn-sm">Adicionar novo post</a>
+				</div>
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -22,7 +27,12 @@
 								<td><?= $posts_item['id'] ?></td>
 								<td><?= $posts_item['title'] ?></td>
 								<td><?= $posts_item['updated_at'] ?></td>
-								<td></td>
+								<td>
+									<div class="btn-group">
+										<a href="<?= base_url('/admin/posts/edit/'.$posts_item['slug']) ?>" class="btn btn-sn bg-gradient-primary">Editar</a>
+										<a href="#" class="btn btn-sn bg-gradient-danger">Excluir</a>
+									</div>
+								</td>
 							</tr>
 							<?php endforeach; ?>
 						<?php else : ?>

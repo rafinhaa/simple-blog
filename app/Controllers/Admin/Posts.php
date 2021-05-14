@@ -52,7 +52,7 @@ class Posts extends BaseController
 		helper('form');
 		$data = [
 			'titlepage' => 'Adicionar novo',
-			'view' => 'admin/posts/create',
+			'view' => 'admin/posts/post',
 		];
 		echo view('admin/template', $data);
 	}
@@ -85,7 +85,7 @@ class Posts extends BaseController
 			$data = [
 				'titlepage' => 'Adicionar novo',
 				'validation'=> $this->validator,
-				'view' => 'admin/posts/create',
+				'view' => 'admin/posts/post',
 			];
 			return view('admin/template', $data);
         }else{
@@ -109,22 +109,6 @@ class Posts extends BaseController
                 return redirect()->to('/admin/posts')->with('success','Post salvo com sucesso!');
             }
         }
-/*
-		if($this->validate($rules)){
-			$model->save([
-				'id' => $this->request->getPost('id'),
-				'title' => $this->request->getPost('title'),
-				'slug'  => url_title($this->request->getPost('title'), '-', TRUE),
-				'body'  => $this->request->getPost('body'),
-			]);
-			echo view('templates/header',$data);
-			echo view('posts/success');
-			echo view('templates/footer');
-		}else{
-			echo view('templates/header',$data);
-			echo view('posts/form');
-			echo view('templates/footer');
-		}*/
 	}
 	public function edit($slug = null)
 	{
@@ -137,14 +121,13 @@ class Posts extends BaseController
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Não consegui encontrar esse post');
 		}
 		$data = [			
-			'title' => 'SimpleBlog',
+			'titlepage' => 'Editar postagem',
 			'titlepost' => $data['post']['title'],
 			'id' => $data['post']['id'],
 			'body' => $data['post']['body'],
+			'view' => 'admin/posts/post',
 		];
-		echo view('templates/header',$data);
-		echo view('posts/form');
-		echo view('templates/footer');
+		echo view('admin/template', $data);
 	}
 	public function delete($slug = null)
 	{		

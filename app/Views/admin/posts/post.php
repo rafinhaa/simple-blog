@@ -13,12 +13,12 @@
 				<div class="card-body">
 					<div class="form-group">
 						<label for="InputTextTitle">Título</label>
-						<input type="text" class="form-control <?= isset($validation) && $validation->hasError('title') ? 'is-invalid' : '' ?>" name="title" id="InputTextTitle" placeholder="Título do post" value="<?= set_value('title') ?>">
+						<input type="text" class="form-control <?= isset($validation) && $validation->hasError('title') ? 'is-invalid' : '' ?>" name="title" id="InputTextTitle" placeholder="Título do post" value="<?= isset($titlepost) ? $titlepost : set_value('title') ?>">
 						<span class="text-danger"><?= isset($validation) ? display_error($validation,'title') : '' ?></span>
 					</div>
 					<div class="form-group">
 						<label for="InputTextAreaBody">Postagem</label>
-						<textarea class="form-control <?= isset($validation) && $validation->hasError('body') ? 'is-invalid' : '' ?>" name="body" id="InputTextAreaBody" rows="9" placeholder="Digite o que quiser ..."><?= set_value('body') ?></textarea>
+						<textarea class="form-control <?= isset($validation) && $validation->hasError('body') ? 'is-invalid' : '' ?>" name="body" id="InputTextAreaBody" rows="9" placeholder="Digite o que quiser ..."><?= isset($body) ? $body : set_value('body') ?></textarea>
 						<span class="text-danger"><?= isset($validation) ? display_error($validation,'body') : '' ?></span>
 					</div>
 				</div>

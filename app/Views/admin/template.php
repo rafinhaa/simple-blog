@@ -264,7 +264,7 @@
 							if(isset($view)){
 							  echo view($view);
 							}
-							?>
+						?>
 					</div>
 				</section>
 				<!-- /.content -->

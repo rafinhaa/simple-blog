@@ -1,3 +1,8 @@
+##### v0.0.10
+- Change View create to post
+- Finished method edit
+##### v0.0.9
+- Removed unused plugins in folder /public/plugins
 ##### v0.0.8
 - Create Helper Form_helper
 - Finished View create
