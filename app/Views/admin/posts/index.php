@@ -30,10 +30,11 @@
 								<td>
 									<div class="btn-group">
 										<a href="<?= base_url('/admin/posts/edit/'.$posts_item['slug']) ?>" class="btn btn-sn bg-gradient-primary">Editar</a>
-										<a href="#" class="btn btn-sn bg-gradient-danger">Excluir</a>
+										<?= createModalButton('Excluir','btn btn-sn bg-gradient-danger','#modal-danger-'.$posts_item['id']) ?>
 									</div>
 								</td>
 							</tr>
+							<?php createModalMessage('danger','modal-danger-'.$posts_item['id'],'Cuidado!','Tem certeza que deseja apagar essa postagem?', base_url('admin/posts/delete/'.$posts_item['slug'])) ?>
 							<?php endforeach; ?>
 						<?php else : ?>
 						<tr>

@@ -16,6 +16,7 @@ class Posts extends BaseController
 
 	public function index()
 	{
+		helper('modal');
 		$postsModel  = new \App\Models\PostsModel();
         $data = [
 			'titlepage' => 'Todos os posts',

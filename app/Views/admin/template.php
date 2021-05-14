@@ -12,8 +12,8 @@
 		<link rel="stylesheet" href="<?= base_url('/adminlte/css/adminlte.min.css') ?>">
 		<?php if (! empty($css) && is_array($css)) : ?>
 		<?php foreach ($css as $name => $css_item): ?>
-			<!-- <?= $name ?> -->
-			<link rel="stylesheet" href="<?= base_url($css_item) ?>">
+		<!-- <?= $name ?> -->
+		<link rel="stylesheet" href="<?= base_url($css_item) ?>">
 		<?php endforeach; ?>
 		<?php endif ?>
 	</head>
@@ -190,21 +190,12 @@
 							<!-- Add icons to the links using the .nav-icon class
 								with font-awesome or any other icon font library -->
 							<li class="nav-item">
-								<a href="#" class="nav-link">
+								<a href="<?= base_url('admin/') ?>" class="nav-link">
 									<i class="nav-icon fas fa-tachometer-alt"></i>
 									<p>
 										Dashboard
-										<i class="right fas fa-angle-left"></i>
 									</p>
 								</a>
-								<ul class="nav nav-treeview">
-									<li class="nav-item">
-										<a href="../../index.html" class="nav-link">
-											<i class="far fa-circle nav-icon"></i>
-											<p>Dashboard v1</p>
-										</a>
-									</li>
-								</ul>
 							</li>
 							<li class="nav-item">
 								<a href="#" class="nav-link">
@@ -220,12 +211,12 @@
 											<p>Todos os posts</p>
 										</a>
 									</li>
-                  <li class="nav-item">
+									<li class="nav-item">
 										<a href="<?= base_url('/admin/posts/create') ?>" class="nav-link">
 											<p>Adicionar novo</p>
 										</a>
 									</li>
-                  <li class="nav-item">
+									<li class="nav-item">
 										<a href="<?= base_url('/admin/posts/create') ?>" class="nav-link">
 											<p>Categorias</p>
 										</a>
@@ -264,7 +255,7 @@
 							if(isset($view)){
 							  echo view($view);
 							}
-						?>
+							?>
 					</div>
 				</section>
 				<!-- /.content -->
@@ -283,18 +274,18 @@
 			<!-- /.control-sidebar -->
 		</div>
 		<!-- ./wrapper -->
-			<!-- jQuery -->
-			<script src="<?= base_url('/plugins/jquery/jquery.min.js') ?>"></script>
-			<!-- Bootstrap 4 -->
-			<script src="<?= base_url('/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-			<!-- AdminLTE App -->
-			<script src="<?= base_url('/adminlte/js/adminlte.min.js') ?>"></script>
-			<!-- AdminLTE for demo purposes -->
-			<script src="<?= base_url('/adminlte/js/demo.js') ?>"></script>
+		<!-- jQuery -->
+		<script src="<?= base_url('/plugins/jquery/jquery.min.js') ?>"></script>
+		<!-- Bootstrap 4 -->
+		<script src="<?= base_url('/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+		<!-- AdminLTE App -->
+		<script src="<?= base_url('/adminlte/js/adminlte.min.js') ?>"></script>
+		<!-- AdminLTE for demo purposes -->
+		<script src="<?= base_url('/adminlte/js/demo.js') ?>"></script>
 		<?php if (! empty($scripts) && is_array($scripts)) : ?>
 		<?php foreach ($scripts as $name => $script): ?>
 		<!-- <?= $name ?> -->
-			<script src="<?= base_url($script) ?>"></script>
+		<script src="<?= base_url($script) ?>"></script>
 		<?php endforeach; ?>
 		<?php endif ?>
 	</body>
