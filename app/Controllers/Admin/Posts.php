@@ -24,10 +24,12 @@ class Posts extends BaseController
 			'view' => 'admin/posts/index',
 			'css' => [
 				'DataTables' => 'datatable/datatables.css',
+				'Toastr' => 'toastr/toastr.min.css',
 			],
 			'scripts' => [
 				'DataTables' => 'datatable/datatables.js',
 				'DataTables Default' => 'datatable/default-datatable.js',
+				'Toastr' => 'toastr/toastr.min.js',
 			],
 		];
 		return view('admin/template', $data);
@@ -132,14 +134,14 @@ class Posts extends BaseController
 	}
 	public function delete($slug = null)
 	{		
-		$model = new PostsModel();
-		$model->where('slug', $slug)->delete();
-		$data = [			
-			'title' => 'SimpleBlog',
-			'info' => 'Post deletado com sucesso.',
-		];
-		echo view('templates/header',$data);
-		echo view('posts/success');
-		echo view('templates/footer');
+		$postsModel  = new \App\Models\PostsModel();
+		$query = $postsModel->where('slug', $slug)->delete();
+		if(!$query){
+			return redirect()->back()->with('fail','something went wrong');
+			//return redirect()->to('register')->with('fail','something went wrong');
+		}else{
+			//redirect to posts page
+			return redirect()->to('/admin/posts')->with('success','Removido com sucesso!');
+		}
 	}
 }

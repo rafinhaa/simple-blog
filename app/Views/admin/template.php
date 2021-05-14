@@ -283,10 +283,16 @@
 		<!-- AdminLTE for demo purposes -->
 		<script src="<?= base_url('/adminlte/js/demo.js') ?>"></script>
 		<?php if (! empty($scripts) && is_array($scripts)) : ?>
-		<?php foreach ($scripts as $name => $script): ?>
-		<!-- <?= $name ?> -->
-		<script src="<?= base_url($script) ?>"></script>
-		<?php endforeach; ?>
+			<?php foreach ($scripts as $name => $script): ?>
+				<!-- <?= $name ?> -->
+				<script src="<?= base_url($script) ?>"></script>
+			<?php endforeach; ?>
 		<?php endif ?>
+		<?php if (!empty(session()->getFlashdata('fail'))) : ?>
+			<script type="text/javascript">toastr.success('Have Fun')</script>
+        <?php endif ?>
+		<?php if (!empty(session()->getFlashdata('success'))) : ?>
+			<script type="text/javascript">toastr.success('Have Fun')</script>
+        <?php endif ?>
 	</body>
 </html>
