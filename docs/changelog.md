@@ -1,3 +1,6 @@
+##### v0.0.13
+- Add new validation in post/store
+- fixed links in admin/template
 ##### v0.0.12
 - Downloaded and instaled Toastr in /public/toastr
 - Edited view admin/template to use toastr

@@ -37,9 +37,9 @@
 							<?php createModalMessage('danger','modal-danger-'.$posts_item['id'],'Cuidado!','Tem certeza que deseja apagar essa postagem?', base_url('admin/posts/delete/'.$posts_item['slug'])) ?>
 							<?php endforeach; ?>
 						<?php else : ?>
-						<tr>
-							<td colsspan="4">Não foi possível encontrar qualquer postagem para você</td>
-						</tr>
+							<tr>
+								<td colsspan="4">Não foi possível encontrar qualquer postagem para você</td>
+							</tr>
 						<?php endif ?>
 					</tbody>
 					<tfoot>

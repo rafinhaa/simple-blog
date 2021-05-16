@@ -69,11 +69,12 @@ class Posts extends BaseController
 
 		$validation = $this->validate([
             'title' => [
-                'rules' => 'required|min_length[3]|max_length[255]',
+                'rules' => 'required|min_length[3]|max_length[255]|is_unique[posts.slug]',
                 'errors' => [
                     'required' => 'O título é necessário',
                     'min_length' => 'O título está muito pequeno',
                     'max_length' => 'O título está grande demais',
+                    'is_unique' => 'Esse título já existe',
                 ],
             ],
             'body' => [
