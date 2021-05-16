@@ -288,5 +288,11 @@
 		<script src="<?= base_url($script) ?>"></script>
 		<?php endforeach; ?>
 		<?php endif ?>
+		<?php if (!empty(session()->getFlashdata('success'))) : ?>
+			<script type="text/javascript">toastr.success('<?= session()->getFlashdata('success') ?>')</script>			
+        <?php endif ?>
+		<?php if (!empty(session()->getFlashdata('fail'))) : ?>
+			<script type="text/javascript">toastr.error('<?= session()->getFlashdata('fail') ?>')</script>			
+        <?php endif ?>
 	</body>
 </html>

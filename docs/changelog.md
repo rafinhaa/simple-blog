@@ -1,3 +1,6 @@
+##### v0.0.12
+- Downloaded and instaled Toastr in /public/toastr
+- Edited view admin/template to use toastr
 ##### v0.0.11
 - Create Helper Modal_helper
 ##### v0.0.10
