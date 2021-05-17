@@ -16,7 +16,7 @@ class Posts extends BaseController
 
 	public function index()
 	{
-		helper('modal');
+		helper(['modal','alert']);
 		$postsModel  = new \App\Models\PostsModel();
         $data = [
 			'titlepage' => 'Todos os posts',
@@ -69,11 +69,12 @@ class Posts extends BaseController
 
 		$validation = $this->validate([
             'title' => [
-                'rules' => 'required|min_length[3]|max_length[255]',
+                'rules' => 'required|min_length[3]|max_length[255]|is_unique[posts.slug]',
                 'errors' => [
                     'required' => 'O título é necessário',
                     'min_length' => 'O título está muito pequeno',
                     'max_length' => 'O título está grande demais',
+                    'is_unique' => 'Esse título já existe',
                 ],
             ],
             'body' => [
@@ -141,7 +142,7 @@ class Posts extends BaseController
 			//return redirect()->to('register')->with('fail','something went wrong');
 		}else{
 			//redirect to posts page
-			return redirect()->to('/admin/posts')->with('success','Removido com sucesso!');
+			return redirect()->to('/admin/posts')->with('success','Post excluído com sucesso!');
 		}
 	}
 }

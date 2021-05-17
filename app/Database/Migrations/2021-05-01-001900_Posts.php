@@ -40,7 +40,7 @@ class Posts extends Migration
 			]
 		]);
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('posts');
+		$this->forge->createTable('posts',true);
 	}
 
 	public function down()

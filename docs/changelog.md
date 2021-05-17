@@ -1,3 +1,9 @@
+##### v0.0.13
+- Create Migration users
+- Create Controller Admin/users
+- Create Model UsersModel
+- Create View admin/user
+- Create View admin/index
 ##### v0.0.12
 - Downloaded and instaled Toastr in /public/toastr
 - Edit View/admin/template to use toastr notification
