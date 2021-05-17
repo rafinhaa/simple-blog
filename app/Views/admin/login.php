@@ -24,17 +24,19 @@
     <div class="card-body">
       <p class="login-box-msg">Entre para iniciar sua sessão</p>
 
-      <form action="<?= base_url('admin/login') ?>" method="post">
+      <form action="<?= base_url('admin/login/check') ?>" method="post">
+        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'email') : '' ?></span>        
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
-            </div>
-          </div>
+            </div>            
+          </div>          
         </div>
+        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'password') : '' ?></span>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Senha">
+          <input type="password" name="password" class="form-control" placeholder="Senha">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

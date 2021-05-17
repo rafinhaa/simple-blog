@@ -1,6 +1,9 @@
+##### v0.0.15
+- Finished Login page
 ##### v0.0.14
 - Create Migration users
- Create View admin/login
+- Create View admin/login
+- Create Library hash
 ##### v0.0.13
 - Create Migration users
 - Create Controller Admin/users
