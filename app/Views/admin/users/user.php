@@ -8,7 +8,7 @@
 			</div>
 			<!-- /.card-header -->
 			<!-- form start -->
-			<form action="<?= base_url('/admin/posts/store') ?>" method="post">
+			<form action="<?= base_url('/admin/users/store') ?>" method="post">
 				<?= csrf_field() ?>
 				<div class="card-body">					
 						<?php if (!empty(session()->getFlashdata('fail'))) : ?>

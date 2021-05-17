@@ -307,10 +307,10 @@
 			<?php endforeach; ?>
 		<?php endif ?>
 		<?php if (!empty(session()->getFlashdata('fail'))) : ?>
-			<script type="text/javascript">toastr.success('Have Fun')</script>
+			<script type="text/javascript">toastr.success('<?= session()->getFlashdata('fail') ?>')</script>
         <?php endif ?>
 		<?php if (!empty(session()->getFlashdata('success'))) : ?>
-			<script type="text/javascript">toastr.success('Have Fun')</script>
+			<script type="text/javascript">toastr.success('<?= session()->getFlashdata('success') ?>')</script>
         <?php endif ?>
 	</body>
 </html>

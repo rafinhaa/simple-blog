@@ -138,7 +138,7 @@ class Posts extends BaseController
 		$postsModel  = new \App\Models\PostsModel();
 		$query = $postsModel->where('slug', $slug)->delete();
 		if(!$query){
-			return redirect()->back()->with('fail','something went wrong');
+			return redirect()->back()->with('fail','Não foi possível excluir o post');
 			//return redirect()->to('register')->with('fail','something went wrong');
 		}else{
 			//redirect to posts page

@@ -29,12 +29,12 @@
 								<td><?= $users_item['email'] ?></td>
 								<td>
 									<div class="btn-group">
-										<a href="<?= base_url('/admin/posts/edit/'.$users_item['id']) ?>" class="btn btn-sn bg-gradient-primary">Editar</a>
+										<a href="<?= base_url('/admin/users/edit/'.$users_item['id']) ?>" class="btn btn-sn bg-gradient-primary">Editar</a>
 										<?= createModalButton('Excluir','btn btn-sn bg-gradient-danger','#modal-danger-'.$users_item['id']) ?>
 									</div>
 								</td>
 							</tr>
-							<?php createModalMessage('danger','modal-danger-'.$users_item['id'],'Cuidado!','Tem certeza que deseja apagar esse usuário?', base_url('admin/posts/delete/'.$users_item['id'])) ?>
+							<?php createModalMessage('danger','modal-danger-'.$users_item['id'],'Cuidado!','Tem certeza que deseja apagar esse usuário?', base_url('admin/users/delete/'.$users_item['id'])) ?>
 							<?php endforeach; ?>
 						<?php else : ?>
 							<tr>
