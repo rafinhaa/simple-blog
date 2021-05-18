@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Controllers\Admin;
-use App\Controllers\BaseController;
+namespace App\Controllers;
+//use App\Controllers\BaseController;
 use App\Libraries\Hash;
 
 class Login extends BaseController
@@ -49,7 +49,7 @@ class Login extends BaseController
             $check_password = Hash::check($password, $user_info['password']);
             if(!$check_password){
                 session()->setFlashdata('fail','Verifique seu usuário e senha');                
-                return redirect()->to('/admin/login')->withInput();
+                return redirect()->to('/login')->withInput();
             }else{
                 $user_id = $user_info['id'];
                 session()->set('loggedUser', $user_id);
@@ -60,7 +60,9 @@ class Login extends BaseController
     public function logout() {
         if(session()->has('loggedUser')){
             session()->remove('loggedUser');
-            return redirect()->to('/admin/login?access=out')->with('fail','Você saiu!');
+            return redirect()->to('/login?access=out')->with('fail','Você saiu!');
+        }else{
+            return redirect()->to('/login?access=out')->with('fail','Você saiu!');
         }
     }
 	

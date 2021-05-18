@@ -1,3 +1,7 @@
+##### v0.0.16
+- Create Filter AuthCheckFilter
+- Edited Config/Routes to allowed filter protects
+- Moved Controller login to /Controllers/Login.php
 ##### v0.0.15
 - Finished Login page
 ##### v0.0.14

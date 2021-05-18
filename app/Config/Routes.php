@@ -22,7 +22,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -32,8 +32,35 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('/admin', 'Admin/Dashboard::index');
+$routes->get('/(:any)', 'Home::index/$1');
+
+
+$routes->group('login', function($routes){    
+	$routes->get('/', 'Login::index');
+	$routes->post('check', 'Login::check');
+	$routes->get('logout', 'Login::logout');
+});
+//route group Login check
+$routes->get('admin/users/delete/(:num)', 'Admin/Users::delete/$1');
+/*
+$routes->group('admin', ['filter' => 'AuthCheck'], function($routes){    
+	//add all routes need protected by this filter
+    $routes->get('/', 'Admin/Dashboard::index');
+    $routes->group('posts', function($routes){
+		$routes->get('/', 'Admin/Posts::index');
+		$routes->get('create', 'Admin/Posts::create');
+		$routes->get('edit/(:any)', 'Admin/Posts/edit/$1');
+		$routes->post('store', 'Admin/Posts::store');
+		$routes->get('delete/(:any)', 'Admin/Posts::delete/$1');
+	});
+	$routes->group('users', function($routes){
+		$routes->get('/', 'Admin/Users::index');
+		$routes->get('create', 'Admin/Users::create');
+		$routes->get('edit/(:any)', 'Admin/Users::edit/$1');
+		$routes->post('store', 'Admin/Users::store');
+		$routes->get('delete/(:num)', 'Admin/Users::delete/$1');
+	});
+});*/
 
 /*
  * --------------------------------------------------------------------

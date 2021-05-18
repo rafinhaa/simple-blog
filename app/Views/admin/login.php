@@ -24,7 +24,7 @@
     <div class="card-body">
       <p class="login-box-msg">Entre para iniciar sua sessão</p>
 
-      <form action="<?= base_url('admin/login/check') ?>" method="post">
+      <form action="<?= base_url('login/check') ?>" method="post">
         <span class="text-danger"><?= isset($validation) ? display_error($validation, 'email') : '' ?></span>        
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">
