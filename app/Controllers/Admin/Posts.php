@@ -34,23 +34,6 @@ class Posts extends BaseController
 		];
 		return view('admin/template', $data);
 	}
-	public function view($slug = NULL)
-	{
-		$model = new PostsModel();
-	
-		$data['posts'] = $model->getPosts($slug);
-	
-		if (empty($data['posts']))
-		{
-			throw new \CodeIgniter\Exceptions\PageNotFoundException('Não foi possível encontrar esse item: '. $slug);
-		}
-	
-		$data['title'] = 'SimpleBlog';
-	
-		echo view('templates/header', $data);
-		echo view('posts/view', $data);
-		echo view('templates/footer', $data);
-	}
 	public function create(){
 		helper('form');
 		$data = [
@@ -59,7 +42,6 @@ class Posts extends BaseController
 		];
 		echo view('admin/template', $data);
 	}
-
 	public function store(){
 		helper('form');
 		$data = [

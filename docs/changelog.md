@@ -1,3 +1,7 @@
+##### v0.0.17
+- Fixed bug in Config/Routes
+- Create Filter AlreadyLoggedInFilter
+Edited Config/Routes to use filter AlreadyLoggedInFilter
 ##### v0.0.16
 - Create Filter AuthCheckFilter
 - Edited Config/Routes to allowed filter protects
