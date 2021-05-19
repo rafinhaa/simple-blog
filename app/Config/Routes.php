@@ -32,38 +32,38 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+//$routes->add('/', 'Home::index');
+//$routes->add('/admin', 'Admin\Dashboard::index');
 
 
 $routes->group('login', function($routes){    
 	$routes->get('/', 'Login::index');
 	$routes->post('check', 'Login::check');
-	$routes->get('logout', 'Login::logout');
+	$routes->add('logout', 'Login::logout');
 }); 
 
 $routes->group('admin', ['filter' => 'AuthCheck'], function($routes){    
 	//add all routes need protected by this filter
-    $routes->get('/', 'Admin/Dashboard::index');
+    $routes->add('/', 'Admin/Dashboard::index');
     $routes->group('posts', function($routes){
-		$routes->get('/', 'Admin\Posts::index');
-		$routes->get('create', 'Admin\Posts::create');
-		$routes->get('edit/(:any)', 'Admin\Posts::edit/$1');
-		$routes->post('store', 'Admin\Posts::store');
-		$routes->get('delete/(.*)', 'Admin\Posts::delete/$1');
+		$routes->add('/', 'Admin\Posts::index');
+		$routes->add('create', 'Admin\Posts::create');
+		$routes->add('edit/(:any)', 'Admin\Posts::edit/$1');
+		$routes->add('store', 'Admin\Posts::store');
+		$routes->add('delete/(.*)', 'Admin\Posts::delete/$1');
 	});
 	$routes->group('users', function($routes){
-		$routes->get('/', 'Admin\Users::index');
-		$routes->get('create', 'Admin\Users::create');
-		$routes->get('edit/(:any)', 'Admin\Users::edit/$1');
-		$routes->post('store', 'Admin\Users::store');
-		$routes->get('delete/(:num)', 'Admin\Users::delete/$1');
+		$routes->add('/', 'Admin\Users::index');
+		$routes->add('create', 'Admin\Users::create');
+		$routes->add('edit/(:any)', 'Admin\Users::edit/$1');
+		$routes->add('store', 'Admin\Users::store');
+		$routes->add('delete/(:num)', 'Admin\Users::delete/$1');
 	});
 });
-
 //route group logged check
-$routes->group('login', ['filter' => 'AlreadyLoggedIn'], function($routes){    
+$routes->group('', ['filter' => 'AlreadyLoggedIn'], function($routes){    
 	//add all routes need protected by this filter
-    $routes->get('/login', 'Login::index');
+    $routes->add('/login', 'Login::index');
 });
 
 /*

@@ -22,9 +22,12 @@
       <a href="<?= base_url('admin/') ?>" class="h1"><b>Simple</b>Blog</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Entre para iniciar sua sessão</p>
-
+      <?php if (!empty(session()->getFlashdata('fail'))) : ?>
+          <div class="alert alert-danger"><?= session()->getFlashdata('fail') ?></div>
+      <?php endif ?>
+      <p class="login-box-msg">Entre para iniciar sua sessão</p>            
       <form action="<?= base_url('login/check') ?>" method="post">
+        <?= csrf_field() ?>
         <span class="text-danger"><?= isset($validation) ? display_error($validation, 'email') : '' ?></span>        
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">
