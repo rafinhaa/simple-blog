@@ -1,3 +1,8 @@
+##### v0.0.19
+- Downloaded and instaled DevBlog Theme in /public/assets
+- Create Route for /
+- View blog/template
+- View blog/posts
 ##### v0.0.18
 - Fixed bug in Config/Routes
 - Create message in View admin/login
