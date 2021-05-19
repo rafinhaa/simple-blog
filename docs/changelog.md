@@ -1,3 +1,5 @@
+##### v0.0.20
+- Updated CHANGLOG.md
 ##### v0.0.19
 - Downloaded and instaled DevBlog Theme in /public/assets
 - Create Route for /
@@ -9,7 +11,7 @@
 ##### v0.0.17
 - Fixed bug in Config/Routes
 - Create Filter AlreadyLoggedInFilter
-Edited Config/Routes to use filter AlreadyLoggedInFilter
+- Edited Config/Routes to use filter AlreadyLoggedInFilter
 ##### v0.0.16
 - Create Filter AuthCheckFilter
 - Edited Config/Routes to allowed filter protects
