@@ -1,3 +1,8 @@
+##### v0.0.21
+- Change blog/template and blog/posts to use Codeigniter template
+- Create namespace to the app/Config/Pager.php file with name blog_pagination
+- Create View blog/pagers/blog_pagination
+- Edited Controller Blog/index and Models/PostsModel use new pagination template
 ##### v0.0.20
 - Updated CHANGLOG.md
 ##### v0.0.19

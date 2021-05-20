@@ -9,9 +9,11 @@ class Index extends BaseController
 	{
 		$postsModel  = new \App\Models\PostsModel();
         $data = [
-			'posts' => $postsModel->getPosts(),
-			'view' => 'blog/posts',
+			'posts' => $postsModel->getPosts(false,5),
+			//custom pagination
+			'currentPage' => $this->request->getVar('page_blog') ? $this->request->getVar('page_blog') : 1,
+			'pager' => $postsModel->pager,
 		];
-		return view('blog/template',$data);
+		return view('blog/posts',$data);
 	}
 }
