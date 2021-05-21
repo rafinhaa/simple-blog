@@ -15,14 +15,14 @@
     <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
     
     <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="<?= base_url('/assets/css/theme-1.css') ?>">
 
 </head> 
 
 <body>
     
     <header class="header text-center">	    
-	    <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">Anthony's Blog</a></h1>
+	    <h1 class="blog-name pt-lg-4 mb-0"><a href="<?= base_url('/') ?>">Anthony's Blog</a></h1>
         
 	    <nav class="navbar navbar-expand-lg navbar-dark" >
            
@@ -65,28 +65,7 @@
     </header>
     
     <div class="main-wrapper">
-	    <section class="cta-section theme-bg-light py-5">
-		    <div class="container text-center">
-			    <h2 class="heading">DevBlog - A Blog Template Made For Developers</h2>
-			    <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
-			    <form class="signup-form form-inline justify-content-center pt-3">
-                    <div class="form-group">
-                        <label class="sr-only" for="semail">Your email</label>
-                        <input type="email" id="semail" name="semail1" class="form-control mr-md-1 semail" placeholder="Enter email">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-		    </div><!--//container-->
-	    </section>
-	    <section class="blog-list px-3 py-5 p-md-5">
-		    <div class="container">
-				<?= $this->renderSection('content') ?>				
-				<div class="d-flex justify-content-center">
-					<?= $pager->links('blog','blog_pagination') ?>
-				</div>				
-		    </div>
-	    </section>
-	    
+		<?= $this->renderSection('content') ?>				
 	    <footer class="footer text-center py-2 theme-bg-dark">
 		   
 	        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->

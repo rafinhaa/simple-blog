@@ -32,8 +32,11 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->add('/', 'Blog\Index::index');
-
+$routes->group('/', function($routes){    
+	$routes->add('', 'Blog\Index::index');
+	$routes->add('post-blog/(:any)', 'Blog\Index::post_blog/$1');
+	$routes->addRedirect('post-blog', '/');
+}); 
 
 $routes->group('login', function($routes){    
 	$routes->get('/', 'Login::index');
@@ -58,6 +61,7 @@ $routes->group('admin', ['filter' => 'AuthCheck'], function($routes){
 		$routes->add('store', 'Admin\Users::store');
 		$routes->add('delete/(:num)', 'Admin\Users::delete/$1');
 	});
+	$routes->add('blog', 'Admin\Blog::index');
 });
 //route group logged check
 $routes->group('', ['filter' => 'AlreadyLoggedIn'], function($routes){    

@@ -16,4 +16,16 @@ class Index extends BaseController
 		];
 		return view('blog/posts',$data);
 	}
+
+	public function post_blog($slug = null)
+	{		
+		$postsModel  = new \App\Models\PostsModel();
+        $data = [
+			'post' => $postsModel->getPosts($slug),
+		];
+		if(empty($data['post'])){
+			throw new \CodeIgniter\Exceptions\PageNotFoundException('Não consegui encontrar esse post');
+		}
+		return view('blog/post-blog',$data);
+	}
 }

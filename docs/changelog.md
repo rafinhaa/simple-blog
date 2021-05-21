@@ -1,3 +1,12 @@
+##### v0.0.22
+- Create Routes group for /
+- Create View blog/post-blog
+- Create method post_blog in Controller Blog/index
+- Create Controller Admin/Blog
+- Create Model Admin/Blog
+- Create Migration Blog
+- Create method index in Controller Admin/Blog
+- Create method store Controller Admin/Blog
 ##### v0.0.21
 - Change blog/template and blog/posts to use Codeigniter template
 - Create namespace to the app/Config/Pager.php file with name blog_pagination
