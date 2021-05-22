@@ -8,15 +8,9 @@
 			</div>
 			<!-- /.card-header -->
 			<!-- form start -->
-			<form action="<?= base_url('/admin/blog') ?>" method="post">
+			<form action="<?= base_url('/admin/blog/store') ?>" method="post">
 				<?= csrf_field() ?>
-				<div class="card-body">					
-						<?php if (!empty(session()->getFlashdata('fail'))) : ?>
-							<div class="alert alert-danger"><?= session()->getFlashdata('fail') ?></div>
-						<?php endif ?>
-						<?php if (!empty(session()->getFlashdata('success'))) : ?>
-							<div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-						<?php endif ?>
+				<div class="card-body">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -92,7 +86,6 @@
 				<div class="card-footer">
 					<button type="submit" class="btn btn-primary">Salvar</button>
 				</div>
-				<input type="hidden" name="id" value="<?= isset($id) ? $id : set_value('id') ?>">
 			</form>
 		</div>
 		<!-- /.card -->

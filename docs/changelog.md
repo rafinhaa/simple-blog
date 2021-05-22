@@ -1,4 +1,7 @@
 ##### v0.0.22
+- Created Routes for url /admin/blog/store
+- Edited method store in Controller Admin/Blog to work with post data successfully
+##### v0.0.22
 - Create Routes group for /
 - Create View blog/post-blog
 - Create method post_blog in Controller Blog/index

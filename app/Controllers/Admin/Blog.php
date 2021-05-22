@@ -8,20 +8,22 @@ class Blog extends BaseController
 {
 	public function index()
 	{
-		helper('form','url');
-		if ($this->request->getMethod() == "post") {
-            $this->store();
-		}else{
-            $blogModel  = new \App\Models\BlogModel();
-			$data = [
-				'titlepage' => 'Configurações',
-				'config' => $blogModel->find(1),
-				'view' => 'admin/blog/index',
-			];
-			return view('admin/template',$data);
-		}		
+		helper('form','url');		
+        $blogModel  = new \App\Models\BlogModel();
+        $data = [
+            'titlepage' => 'Configurações',
+            'config' => $blogModel->find(1),
+            'view' => 'admin/blog/index',
+            'css' => [
+                'Toastr' => 'toastr/toastr.min.css',
+            ],
+            'scripts' => [
+                'Toastr' => 'toastr/toastr.min.js',
+            ],
+        ];
+        return view('admin/template',$data);		
 	}
-	private function store(){
+	public function store(){
         $validation = $this->validate([
             'nome-blog' => [
                 'rules' => 'required|min_length[3]|max_length[25]',
@@ -39,31 +41,31 @@ class Blog extends BaseController
                 ],
             ],
             'twitter-link' => [
-                'rules' => 'valid_url',
+                'rules' => 'valid_url|permit_empty',
                 'errors' => [
                     'valid_url' => 'O link digitado não é válido',
                 ],                
             ],
             'github-link' => [
-                'rules' => 'valid_url',
+                'rules' => 'valid_url|permit_empty',
                 'errors' => [
                     'valid_url' => 'O link digitado não é válido',
                 ],                
             ],
 			'linkedin-link' => [
-                'rules' => 'valid_url',
+                'rules' => 'valid_url|permit_empty',
                 'errors' => [
                     'valid_url' => 'O link digitado não é válido',
                 ],                
             ],
 			'stackoverflow-link' => [
-                'rules' => 'valid_url',
+                'rules' => 'valid_url|permit_empty',
                 'errors' => [
                     'valid_url' => 'O link digitado não é válido',
                 ],                
             ],
 			'codepen-link' => [
-                'rules' => 'valid_url',
+                'rules' => 'valid_url|permit_empty',
                 'errors' => [
                     'valid_url' => 'O link digitado não é válido',
                 ],                
@@ -87,27 +89,27 @@ class Blog extends BaseController
             $codepen = $this->request->getpost('codepen-link');
             //columns in db
             $values = [
+                'id' => 1,
                 'blog_name'=> $name,
                 'bio'=> $bio,                
                 'social_twitter'=> $twitter,                
-                'social_linkedin'=> $github,                
-                'social_github'=> $linkedin,                
+                'social_linkedin'=> $linkedin,                
+                'social_github'=> $github,                
                 'social_stoverflow'=> $stackoverflow,                
                 'social_codepen'=> $codepen,                
             ];
-
             $blogModel = new \App\Models\BlogModel();
-            $query = $blogModel->insert($values);
+            if(!$blogModel->find(1)){
+                $query = $blogModel->insert($values);
+            }else{
+                $query = $blogModel->save($values);
+            }
             if(!$query){
-                return redirect()->back()->with('fail','Não foi possível adicionar o usuário');
+                return redirect()->back()->with('fail','Não foi possível salvar as configurações');
                 //return redirect()->to('register')->with('fail','something went wrong');
             }else{
-                //redirect user to login page
-                //return redirect()->to('register')->with('success','You are now registred, please login in');
-                //redirect user to dashboard
-                //$last_id = $blogModel->insertID();
-                //session()->set('loggedUser', $last_id);                
-				return redirect()->to('/blog')->with('success','Configurações salvas com sucesso');
+                //$this->index();
+                return redirect()->to('/admin/blog')->with('success','Configurações salvas com sucesso');
             }
         }
 	}
