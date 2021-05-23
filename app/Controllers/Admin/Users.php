@@ -8,7 +8,6 @@ class Users extends AdminController
 {
 	public function index()
 	{
-		helper(['modal','alert']);
 		$usersModel  = new \App\Models\UsersModel();
         $data = [
 			'titlepage' => 'Todos os posts',
@@ -26,14 +25,12 @@ class Users extends AdminController
 		return view('admin/users/index', $data);
 	}
 	public function create(){
-		helper('form');
 		$data = [
 			'titlepage' => 'Adicionar novo',
 		];
 		echo view('admin/users/user', $data);
 	}
 	public function store(){
-		helper('form','url');
         $validation = $this->validate([
             'name' => [
                 'rules' => 'required',

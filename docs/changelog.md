@@ -1,3 +1,5 @@
+##### v0.0.25
+- All helpers are now carried by AdminController
 ##### v0.0.24
 - Edited all Controller in Controllers/Admin to use View Layouts
 ##### v0.0.23

@@ -7,8 +7,7 @@ use App\Controllers\AdminController;
 class Blog extends AdminController
 {
 	public function index()
-	{
-		helper('form','url');		
+	{		
         $blogModel  = new \App\Models\BlogModel();
         $data = [
             'titlepage' => 'Configurações',
@@ -112,8 +111,7 @@ class Blog extends AdminController
             }
         }
 	}
-    public function imagem(){
-        helper('form','url');		
+    public function imagem(){	
         $blogModel  = new \App\Models\BlogModel();
         $data = [
             'titlepage' => 'Configurações',

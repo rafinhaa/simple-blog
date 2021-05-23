@@ -16,7 +16,6 @@ class Posts extends AdminController
 
 	public function index()
 	{
-		helper(['modal','alert']);
 		$postsModel  = new \App\Models\PostsModel();
         $data = [
 			'titlepage' => 'Todos os posts',
@@ -34,19 +33,12 @@ class Posts extends AdminController
 		return view('admin/posts/index', $data);
 	}
 	public function create(){
-		helper('form');
 		$data = [
 			'titlepage' => 'Adicionar novo',
 		];
 		echo view('admin/posts/post', $data);
 	}
 	public function store(){
-		helper('form');
-		$data = [
-			'title' => 'Create a news item',
-			'info' => 'Post salvo com sucesso.',
-		];
-
 		$validation = $this->validate([
             'title' => [
                 'rules' => 'required|min_length[3]|max_length[255]|is_unique[posts.slug]',
@@ -71,7 +63,7 @@ class Posts extends AdminController
 				'validation'=> $this->validator,
 				'view' => 'admin/posts/post',
 			];
-			return view('admin/template', $data);
+			return view('admin/posts/post', $data);
         }else{
 			$id = $this->request->getpost('id');
             $title = $this->request->getpost('title');
@@ -96,7 +88,6 @@ class Posts extends AdminController
 	}
 	public function edit($slug = null)
 	{
-		helper('form');
 		$model = new PostsModel();
 		$data = [
 			'post' => $model->getPosts($slug),
