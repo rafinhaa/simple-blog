@@ -1,3 +1,5 @@
+##### v0.0.23
+- Created main Controller AdminController and BlogController in /Controller
 ##### v0.0.22
 - Created Routes for url /admin/blog/store
 - Edited method store in Controller Admin/Blog to work with post data successfully

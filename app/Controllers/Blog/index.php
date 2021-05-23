@@ -1,27 +1,27 @@
 <?php
 
 namespace App\Controllers\Blog;
-use App\Controllers\BaseController;
+use App\Controllers\BlogController;
 
-class Index extends BaseController
+class Index extends BlogController
 {
 	public function index()
-	{
-		$postsModel  = new \App\Models\PostsModel();
-        $data = [
-			'posts' => $postsModel->getPosts(false,5),
+	{	
+		$data = [
+			'config' => $this->configBlog->find(1),
+			'posts' => $this->postsModel->getPosts(false,5),
 			//custom pagination
 			'currentPage' => $this->request->getVar('page_blog') ? $this->request->getVar('page_blog') : 1,
-			'pager' => $postsModel->pager,
+			'pager' => $this->postsModel->pager,
 		];
 		return view('blog/posts',$data);
 	}
 
 	public function post_blog($slug = null)
 	{		
-		$postsModel  = new \App\Models\PostsModel();
         $data = [
-			'post' => $postsModel->getPosts($slug),
+			'config' => $this->configBlog->find(1),
+			'post' => $this->postsModel->getPosts($slug),
 		];
 		if(empty($data['post'])){
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Não consegui encontrar esse post');

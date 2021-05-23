@@ -18,7 +18,7 @@ use Psr\Log\LoggerInterface;
  * For security be sure to declare any new methods as protected or private.
  */
 
-class BaseController extends Controller
+class BlogController extends Controller
 {
 	/**
 	 * An array of helpers to be loaded automatically upon
@@ -45,5 +45,7 @@ class BaseController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
+		$this->configBlog  = new \App\Models\BlogModel();
+		$this->postsModel  = new \App\Models\PostsModel();
 	}
 }

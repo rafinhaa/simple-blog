@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Controllers\Admin;
-use App\Controllers\BaseController;
+use App\Controllers\AdminController;
 
-class Dashboard extends BaseController
+class Dashboard extends AdminController
 {
 	public function index()
 	{

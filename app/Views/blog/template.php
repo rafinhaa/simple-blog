@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>Bootstrap 4 Blog Template For Developers</title>
+    <title><?= esc($config['blog_name']) ?></title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -22,7 +22,7 @@
 <body>
     
     <header class="header text-center">	    
-	    <h1 class="blog-name pt-lg-4 mb-0"><a href="<?= base_url('/') ?>">Anthony's Blog</a></h1>
+	    <h1 class="blog-name pt-lg-4 mb-0"><a href="<?= base_url('/') ?>"><?= esc($config['blog_name']) ?></a></h1>
         
 	    <nav class="navbar navbar-expand-lg navbar-dark" >
            
@@ -34,13 +34,23 @@
 				<div class="profile-section pt-3 pt-lg-0">
 				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.png" alt="image" >			
 					
-					<div class="bio mb-3">Hi, my name is Anthony Doe. Briefly introduce yourself here. You can also provide a link to the about page.<br><a href="about.html">Find out more about me</a></div><!--//bio-->
+					<div class="bio mb-3"><?= esc($config['bio']) ?><br><a href="about.html">Find out more about me</a></div><!--//bio-->
 					<ul class="social-list list-inline py-3 mx-auto">
-			            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
-			            <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
-			            <li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
-			            <li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
-			            <li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
+                        <?php if (!empty($config['social_twitter'])): ?>
+                            <li class="list-inline-item"><a href="<?= $config['social_twitter'] ?>"><i class="fab fa-twitter fa-fw"></i></a></li>
+                        <?php endif; ?>
+                        <?php if (!empty($config['social_linkedin'])): ?>
+                            <li class="list-inline-item"><a href="<?= $config['social_linkedin'] ?>"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                        <?php endif; ?>
+                        <?php if (!empty($config['social_github'])): ?>
+                            <li class="list-inline-item"><a href="<?= $config['social_github'] ?>"><i class="fab fa-github-alt fa-fw"></i></a></li>
+                        <?php endif; ?>
+                        <?php if (!empty($config['social_stoverflow'])): ?>
+                            <li class="list-inline-item"><a href="<?= $config['social_stoverflow'] ?>"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+                        <?php endif; ?>
+			            <?php if (!empty($config['social_codepen'])): ?>
+                            <li class="list-inline-item"><a href="<?= $config['social_codepen'] ?>"><i class="fab fa-codepen fa-fw"></i></a></li>
+                        <?php endif; ?>
 			        </ul><!--//social-list-->
 			        <hr> 
 				</div><!--//profile-section-->

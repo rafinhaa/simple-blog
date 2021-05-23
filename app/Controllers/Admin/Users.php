@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Controllers\Admin;
-use App\Controllers\BaseController;
+use App\Controllers\AdminController;
 use App\Libraries\Hash;
 
-class Users extends BaseController
+class Users extends AdminController
 {
 	public function index()
 	{

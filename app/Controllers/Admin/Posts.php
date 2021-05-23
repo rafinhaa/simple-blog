@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Controllers\Admin;
-use App\Controllers\BaseController;
+use App\Controllers\AdminController;
 use App\Models\PostsModel;
 
-class Posts extends BaseController
+class Posts extends AdminController
 {
 
 	/**

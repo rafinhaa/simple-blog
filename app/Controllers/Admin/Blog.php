@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\BaseController;
+use App\Controllers\AdminController;
 
-class Blog extends BaseController
+class Blog extends AdminController
 {
 	public function index()
 	{
