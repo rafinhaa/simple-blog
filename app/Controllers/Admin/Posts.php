@@ -21,7 +21,6 @@ class Posts extends AdminController
         $data = [
 			'titlepage' => 'Todos os posts',
 			'posts' => $postsModel->getPosts(),
-			'view' => 'admin/posts/index',
 			'css' => [
 				'DataTables' => 'datatable/datatables.css',
 				'Toastr' => 'toastr/toastr.min.css',
@@ -32,15 +31,14 @@ class Posts extends AdminController
 				'Toastr' => 'toastr/toastr.min.js',
 			],
 		];
-		return view('admin/template', $data);
+		return view('admin/posts/index', $data);
 	}
 	public function create(){
 		helper('form');
 		$data = [
 			'titlepage' => 'Adicionar novo',
-			'view' => 'admin/posts/post',
 		];
-		echo view('admin/template', $data);
+		echo view('admin/posts/post', $data);
 	}
 	public function store(){
 		helper('form');
@@ -111,9 +109,8 @@ class Posts extends AdminController
 			'titlepost' => $data['post']['title'],
 			'id' => $data['post']['id'],
 			'body' => $data['post']['body'],
-			'view' => 'admin/posts/post',
 		];
-		echo view('admin/template', $data);
+		echo view('admin/posts/post', $data);
 	}
 	public function delete($slug = null)
 	{		

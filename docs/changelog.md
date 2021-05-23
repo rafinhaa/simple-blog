@@ -1,3 +1,5 @@
+##### v0.0.24
+- Edited all Controller in Controllers/Admin to use View Layouts
 ##### v0.0.23
 - Created main Controller AdminController and BlogController in /Controller
 ##### v0.0.22

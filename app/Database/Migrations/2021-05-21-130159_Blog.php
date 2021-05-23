@@ -36,6 +36,12 @@ class Blog extends Migration
 			'social_codepen' => [
 			'type' => 'TEXT',
 		],
+			'personal_image' => [
+			'type' => 'TEXT',
+		],
+			'favicon' => [
+			'type' => 'TEXT',
+		],
 			'created_at' => [
 			'type' => 'DATETIME',
 			'null' => true,

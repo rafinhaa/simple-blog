@@ -61,8 +61,12 @@ $routes->group('admin', ['filter' => 'AuthCheck'], function($routes){
 		$routes->add('store', 'Admin\Users::store');
 		$routes->add('delete/(:num)', 'Admin\Users::delete/$1');
 	});
-	$routes->add('blog', 'Admin\Blog::index');
-	$routes->add('blog/store', 'Admin\Blog::store');
+	$routes->group('blog', function($routes){
+		$routes->add('/', 'Admin\Blog::index');
+		$routes->add('store', 'Admin\Blog::store');
+		$routes->add('imagem', 'Admin\Blog::imagem');
+	});
+
 });
 //route group logged check
 $routes->group('', ['filter' => 'AlreadyLoggedIn'], function($routes){    

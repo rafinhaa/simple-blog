@@ -13,7 +13,6 @@ class Users extends AdminController
         $data = [
 			'titlepage' => 'Todos os posts',
 			'users' => $usersModel->findAll(),
-			'view' => 'admin/users/index',
 			'css' => [
 				'DataTables' => 'datatable/datatables.css',
 				'Toastr' => 'toastr/toastr.min.css',
@@ -24,15 +23,14 @@ class Users extends AdminController
 				'Toastr' => 'toastr/toastr.min.js',
 			],
 		];
-		return view('admin/template', $data);
+		return view('admin/users/index', $data);
 	}
 	public function create(){
 		helper('form');
 		$data = [
 			'titlepage' => 'Adicionar novo',
-			'view' => 'admin/users/user',
 		];
-		echo view('admin/template', $data);
+		echo view('admin/users/user', $data);
 	}
 	public function store(){
 		helper('form','url');
@@ -74,9 +72,8 @@ class Users extends AdminController
 			$data = [
 				'titlepage' => 'Adicionar novo',
 				'validation'=> $this->validator,
-				'view' => 'admin/users/user',
 			];
-			return view('admin/template', $data);
+			return view('admin/users/user', $data);
         }else{
             $name = $this->request->getpost('name');
             $email = $this->request->getpost('email');

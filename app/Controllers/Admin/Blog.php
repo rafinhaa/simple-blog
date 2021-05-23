@@ -13,7 +13,6 @@ class Blog extends AdminController
         $data = [
             'titlepage' => 'Configurações',
             'config' => $blogModel->find(1),
-            'view' => 'admin/blog/index',
             'css' => [
                 'Toastr' => 'toastr/toastr.min.css',
             ],
@@ -21,7 +20,7 @@ class Blog extends AdminController
                 'Toastr' => 'toastr/toastr.min.js',
             ],
         ];
-        return view('admin/template',$data);		
+        return view('admin/blog/index',$data);		
 	}
 	public function store(){
         $validation = $this->validate([
@@ -113,4 +112,19 @@ class Blog extends AdminController
             }
         }
 	}
+    public function imagem(){
+        helper('form','url');		
+        $blogModel  = new \App\Models\BlogModel();
+        $data = [
+            'titlepage' => 'Configurações',
+            'config' => $blogModel->find(1),
+            'css' => [
+                'Toastr' => 'toastr/toastr.min.css',
+            ],
+            'scripts' => [
+                'Toastr' => 'toastr/toastr.min.js',
+            ],
+        ];
+        return view('admin/blog/imagem',$data);
+    }
 }

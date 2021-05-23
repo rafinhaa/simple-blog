@@ -239,15 +239,28 @@
 											<p>Adicionar novo</p>
 										</a>
 									</li>
-								</ul>
-								<li class="nav-item">
-								<a href="<?= base_url('admin/blog') ?>" class="nav-link">
+								</ul>							
+							</li>
+							<li class="nav-item">
+								<a href="#>" class="nav-link">
 									<i class="nav-icon fas fa-cogs"></i>
 									<p>
 										Configurações
+										<i class="right fas fa-angle-left"></i>
 									</p>
 								</a>
-							</li>
+								<ul class="nav nav-treeview">
+									<li class="nav-item">
+										<a href="<?= base_url('/admin/blog') ?>" class="nav-link">
+											<p>Blog</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="<?= base_url('/admin/blog/imagem') ?>" class="nav-link">
+											<p>Imagem</p>
+										</a>
+									</li>
+								</ul>	
 							</li>
 							<li class="nav-item">
 								<a href="<?= base_url('/login/logout') ?>" class="nav-link">
@@ -285,11 +298,7 @@
 				<!-- Main content -->
 				<section class="content">
 					<div class="container-fluid">
-						<?php
-							if(isset($view)){
-							  echo view($view);
-							}
-							?>
+						<?= $this->renderSection('content') ?>
 					</div>					
 				</section>
 				<!-- /.content -->
