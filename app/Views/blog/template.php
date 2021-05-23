@@ -32,8 +32,11 @@
 
 			<div id="navigation" class="collapse navbar-collapse flex-column" >
 				<div class="profile-section pt-3 pt-lg-0">
-				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.png" alt="image" >			
-					
+                    <?php if(file_exists('assets/images/blog-personal-image.png')): ?>
+				        <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/blog-personal-image.png" alt="image" >			
+                    <?php else: ?>
+                        <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.png" alt="image" >
+                    <?php endif; ?>
 					<div class="bio mb-3"><?= esc($config['bio']) ?><br><a href="about.html">Find out more about me</a></div><!--//bio-->
 					<ul class="social-list list-inline py-3 mx-auto">
                         <?php if (!empty($config['social_twitter'])): ?>

@@ -1,4 +1,6 @@
 ##### v0.0.27
+- Finished logic to upload personal image blog in Controller Admin/Blog/Imagem
+##### v0.0.26
 - Inicialized method for upload personal imagem
 ##### v0.0.25
 - All helpers are now carried by AdminController
