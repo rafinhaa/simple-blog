@@ -74,9 +74,8 @@ class Blog extends AdminController
 			$data = [
 				'titlepage' => 'Configurações',
                 'validation'=> $this->validator,
-				'view' => 'admin/blog/index',
 			];
-			echo view('admin/template',$data);
+			echo view('admin/blog/index',$data);
         }else{
             $name = $this->request->getpost('nome-blog');
             $bio = $this->request->getpost('bio');
@@ -114,8 +113,7 @@ class Blog extends AdminController
     public function imagem(){	
         $blogModel  = new \App\Models\BlogModel();
         $data = [
-            'titlepage' => 'Configurações',
-            'config' => $blogModel->find(1),
+            'titlepage' => 'Imagem do blog',
             'css' => [
                 'Toastr' => 'toastr/toastr.min.css',
             ],
@@ -124,5 +122,32 @@ class Blog extends AdminController
             ],
         ];
         return view('admin/blog/imagem',$data);
+    }
+    public function upload(){
+        $validation = $this->validate([
+            'blog-imagem' => [
+                'rules' => 'uploaded[blog-imagem]|mime_in[blog-imagem,image/png,image/jpg]|ext_in[blog-imagem,png,jpg]',
+                'errors' => [
+                    'uploaded' => 'uploaded error',
+                    'mime_in' => 'Mime error',
+                    'ext_in' => 'ext error',
+                ],
+            ],
+        ]);
+		
+        if(!$validation){
+			$data = [
+				'titlepage' => 'Imagem do blog',
+                'validation'=> $this->validator,
+			];
+			echo view('admin/blog/imagem',$data);            
+        }else{
+            $file = $this->request->getFile('blog-imagem');
+            if ($file->isValid() && ! $file->hasMoved()){
+            $newName = 'blog-personal-image.png';
+            $file->move(WRITEPATH.'uploads\blog', $newName);
+            echo 'oi';
+            }
+        }
     }
 }

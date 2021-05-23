@@ -65,6 +65,7 @@ $routes->group('admin', ['filter' => 'AuthCheck'], function($routes){
 		$routes->add('/', 'Admin\Blog::index');
 		$routes->add('store', 'Admin\Blog::store');
 		$routes->add('imagem', 'Admin\Blog::imagem');
+		$routes->add('upload', 'Admin\Blog::upload');
 	});
 
 });

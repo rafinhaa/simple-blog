@@ -1,3 +1,5 @@
+##### v0.0.27
+- Inicialized method for upload personal imagem
 ##### v0.0.25
 - All helpers are now carried by AdminController
 ##### v0.0.24
