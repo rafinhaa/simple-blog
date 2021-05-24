@@ -1,3 +1,6 @@
+##### v0.0.28
+- Removed unused files
+- Correctly configured the display language on github
 ##### v0.0.27
 - Finished logic to upload personal image blog in Controller Admin/Blog/Imagem
 ##### v0.0.26
