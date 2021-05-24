@@ -25,6 +25,19 @@
 									<label for="InputTextAreaBio">Biografia do autor</label>
 									<textarea class="form-control <?= isset($validation) && $validation->hasError('bio') ? 'is-invalid' : '' ?>" name="bio" id="InputTextBio" rows="5" placeholder="Digite o que quiser ..."><?= isset($config["bio"]) ? $config["bio"] : set_value('bio') ?></textarea>
 									<span class="text-danger"><?= isset($validation) ? display_error($validation,'bio') : '' ?></span>
+								</div>
+								<div class="form-group">									
+									<label for="SelectColor">Cor</label>
+										<select id="SelectColor" name="theme-color"class="form-control">
+											<option value="1" style="background-color: #5FCB71;"></option>
+											<option value="2" style="background-color: #5BC3D5;"></option>
+											<option value="3" style="background-color: #3B7EEB;"></option>
+											<option value="4" style="background-color: #5ECCA9;"></option>
+											<option value="5" style="background-color: #EEA73B;"></option>
+											<option value="6" style="background-color: #5469C9;"></option>
+											<option value="7" style="background-color: #5D6BA7;"></option>
+											<option value="8" style="background-color: #6C51A4;"></option>
+									</select>
 								</div>					
 							</div>						
 						</div>

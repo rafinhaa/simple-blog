@@ -337,5 +337,10 @@
 		<?php if (!empty(session()->getFlashdata('success'))) : ?>
 			<script type="text/javascript">toastr.success('<?= session()->getFlashdata('success') ?>')</script>
         <?php endif ?>
+		<script>
+		$('.my-colorpicker2').on('colorpickerChange', function(event) {
+      		$('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    	})
+	</script>
 	</body>
 </html>

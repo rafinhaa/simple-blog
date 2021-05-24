@@ -79,6 +79,7 @@ class Blog extends AdminController
         }else{
             $name = $this->request->getpost('nome-blog');
             $bio = $this->request->getpost('bio');
+            $theme = $this->request->getpost('theme-color');
             $twitter = $this->request->getpost('twitter-link');
             $github = $this->request->getpost('github-link');
             $linkedin = $this->request->getpost('linkedin-link');
@@ -89,6 +90,7 @@ class Blog extends AdminController
                 'id' => 1,
                 'blog_name'=> $name,
                 'bio'=> $bio,                
+                'theme'=> $theme,                
                 'social_twitter'=> $twitter,                
                 'social_linkedin'=> $linkedin,                
                 'social_github'=> $github,                

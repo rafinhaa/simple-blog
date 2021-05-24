@@ -11,6 +11,7 @@ class BlogModel extends Model
     protected $allowedFields = [
 		'blog_name',
 		'bio',
+		'theme',
 		'social_twitter',
 		'social_linkedin',
 		'social_twitter',

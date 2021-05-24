@@ -21,6 +21,10 @@ class Blog extends Migration
 			'bio' => [
 			'type' => 'LONGTEXT',
 		],
+			'theme' => [
+			'type' => 'TINYINT',			
+			'default' => 1,			
+		],
 			'social_twitter' => [
 			'type' => 'TEXT',
 		],

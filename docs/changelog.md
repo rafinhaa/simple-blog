@@ -1,3 +1,8 @@
+##### v0.0.29
+- Finished View image upload
+- Created View image upload
+- Create new fild in Model blog
+- Create option do change theme color
 ##### v0.0.28
 - Removed unused files
 - Correctly configured the display language on github
