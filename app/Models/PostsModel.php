@@ -8,12 +8,9 @@ class PostsModel extends Model
 {
     protected $table      = 'posts';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['title', 'slug', 'body'];
+    protected $allowedFields = ['title', 'slug', 'body', 'photo_post'];
     protected $useSoftDeletes = true;
-    protected $useTimestamps = true;/*
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';*/
+    protected $useTimestamps = true;
 
     public function getPosts($slug = false, $paginate = null){
     if ($slug === false && is_null($paginate)){

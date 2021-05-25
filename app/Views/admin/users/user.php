@@ -13,13 +13,7 @@
 				<!-- form start -->
 				<form action="<?= base_url('/admin/users/store') ?>" method="post">
 					<?= csrf_field() ?>
-					<div class="card-body">					
-							<?php if (!empty(session()->getFlashdata('fail'))) : ?>
-								<div class="alert alert-danger"><?= session()->getFlashdata('fail') ?></div>
-							<?php endif ?>
-							<?php if (!empty(session()->getFlashdata('success'))) : ?>
-								<div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-							<?php endif ?>
+					<div class="card-body">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">

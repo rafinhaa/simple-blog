@@ -54,6 +54,14 @@ class Posts extends AdminController
                 'errors' => [
                     'required' => 'O corpo da postagem é necessário',
                 ],                
+            ],						
+			'post-imagem' => [
+                'rules' => 'permit_empty|uploaded[post-imagem]|mime_in[post-imagem,image/png,image/jpg]|ext_in[post-imagem,png,jpg]',
+                'errors' => [
+                    'uploaded' => 'Não foi possível fazer o upload',
+                    'mime_in' => 'Apenas faça upload de arquivos PNG  ou JPG',
+                    'ext_in' => 'Extensão da imagem inválida',
+                ],
             ],
         ]);
 
@@ -68,12 +76,20 @@ class Posts extends AdminController
 			$id = $this->request->getpost('id');
             $title = $this->request->getpost('title');
             $body = $this->request->getpost('body');
+			$photo_post = $this->request->getFile('post-imagem');
+			if ($photo_post->isValid() && ! $photo_post->hasMoved()){
+                $newName = $photo_post->getRandomName();
+                if(!$photo_post->move('upload/posts-img/', $newName, true)){
+                    return redirect()->to('/admin/blog/imagem')->with('fail','Falha ao tentar salvar a imagem');
+				}
+            }
 			//columns in db
             $values = [
                 'id' => $id,
                 'title' => $title,
                 'body' => $body,
 				'slug' => url_title($this->request->getPost('title'), '-', TRUE),
+				'photo_post' => $newName,
             ];
 			$postsModel  = new \App\Models\PostsModel();
 			$query = $postsModel->save($values);

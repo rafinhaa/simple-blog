@@ -11,18 +11,32 @@
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form action="<?= base_url('/admin/posts/store') ?>" method="post">
+				<form action="<?= base_url('/admin/posts/store') ?>" method="post" enctype="multipart/form-data">
 					<?= csrf_field() ?>
 					<div class="card-body">
-						<div class="form-group">
-							<label for="InputTextTitle">Título</label>
-							<input type="text" class="form-control <?= isset($validation) && $validation->hasError('title') ? 'is-invalid' : '' ?>" name="title" id="InputTextTitle" placeholder="Título do post" value="<?= isset($titlepost) ? $titlepost : set_value('title') ?>">
-							<span class="text-danger"><?= isset($validation) ? display_error($validation,'title') : '' ?></span>
-						</div>
-						<div class="form-group">
-							<label for="InputTextAreaBody">Postagem</label>
-							<textarea class="form-control <?= isset($validation) && $validation->hasError('body') ? 'is-invalid' : '' ?>" name="body" id="InputTextAreaBody" rows="9" placeholder="Digite o que quiser ..."><?= isset($body) ? $body : set_value('body') ?></textarea>
-							<span class="text-danger"><?= isset($validation) ? display_error($validation,'body') : '' ?></span>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="InputTextTitle">Título</label>
+									<input type="text" class="form-control <?= isset($validation) && $validation->hasError('title') ? 'is-invalid' : '' ?>" name="title" id="InputTextTitle" placeholder="Título do post" value="<?= isset($titlepost) ? $titlepost : set_value('title') ?>">
+									<span class="text-danger"><?= isset($validation) ? display_error($validation,'title') : '' ?></span>
+								</div>
+								<div class="form-group">
+									<label for="InputTextAreaBody">Postagem</label>
+									<textarea class="form-control <?= isset($validation) && $validation->hasError('body') ? 'is-invalid' : '' ?>" name="body" id="InputTextAreaBody" rows="9" placeholder="Digite o que quiser ..."><?= isset($body) ? $body : set_value('body') ?></textarea>
+									<span class="text-danger"><?= isset($validation) ? display_error($validation,'body') : '' ?></span>
+								</div>
+								<div class="form-group">
+									<label for="InputFile">Imagem</label>
+									<div class="input">
+										<div class="custom-file">
+											<input type="file" class="custom-file-input" id="InputFile" name="post-imagem">
+											<label class="custom-file-label" for="InputFile">Escolher</label>
+										</div>
+										<span class="text-danger"><?= isset($validation) ? display_error($validation, 'post-imagem') : '' ?></span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<!-- /.card-body -->

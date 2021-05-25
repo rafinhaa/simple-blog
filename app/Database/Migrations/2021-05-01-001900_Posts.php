@@ -25,6 +25,10 @@ class Posts extends Migration
 			],
 			'body'     => [
 				'type'             => 'LONGTEXT',
+			],			
+				'photo_post'     => [
+				'type'           => 'TEXT',
+				'default'           => null,
 			],
 			'created_at'  => [
 				'type'	      => 'DATETIME',

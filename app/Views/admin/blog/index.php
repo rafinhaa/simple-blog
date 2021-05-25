@@ -29,14 +29,14 @@
 								<div class="form-group">									
 									<label for="SelectColor">Cor</label>
 										<select id="SelectColor" name="theme-color"class="form-control">
-											<option value="1" style="background-color: #5FCB71;"></option>
-											<option value="2" style="background-color: #5BC3D5;"></option>
-											<option value="3" style="background-color: #3B7EEB;"></option>
-											<option value="4" style="background-color: #5ECCA9;"></option>
-											<option value="5" style="background-color: #EEA73B;"></option>
-											<option value="6" style="background-color: #5469C9;"></option>
-											<option value="7" style="background-color: #5D6BA7;"></option>
-											<option value="8" style="background-color: #6C51A4;"></option>
+											<option value="1" style="color: #5FCB71;">Verde claro</option>
+											<option value="2" style="color: #5BC3D5;">Azul claro</option>
+											<option value="3" style="color: #3B7EEB;">Azul marinho</option>
+											<option value="4" style="color: #5ECCA9;">Verde limão</option>
+											<option value="5" style="color: #EEA73B;">Laranja</option>
+											<option value="6" style="color: #5469C9;">Roxo</option>
+											<option value="7" style="color: #5D6BA7;">Azul petróleo</option>
+											<option value="8" style="color: #6C51A4;">Rosa escuro</option>
 									</select>
 								</div>					
 							</div>						

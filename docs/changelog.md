@@ -1,3 +1,6 @@
+##### v0.0.30
+- Finished colors select
+- Inicialized logic for upload photo in blog posts
 ##### v0.0.29 - UPDATE
 - Finished View image upload
 - Create new field in Model blog

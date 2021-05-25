@@ -130,9 +130,9 @@ class Blog extends AdminController
             'blog-imagem' => [
                 'rules' => 'uploaded[blog-imagem]|mime_in[blog-imagem,image/png,image/jpg]|ext_in[blog-imagem,png,jpg]',
                 'errors' => [
-                    'uploaded' => 'uploaded error',
-                    'mime_in' => 'Mime error',
-                    'ext_in' => 'ext error',
+                    'uploaded' => 'Não foi possível fazer o upload',
+                    'mime_in' => 'Apenas faça upload de arquivos PNG  ou JPG',
+                    'ext_in' => 'Extensão da imagem inválida',
                 ],
             ],
         ]);
