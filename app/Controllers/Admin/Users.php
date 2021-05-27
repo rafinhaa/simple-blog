@@ -12,6 +12,7 @@ class Users extends AdminController
         $data = [
 			'titlepage' => 'Todos os posts',
 			'users' => $usersModel->findAll(),
+            'currentUser' => $this->currentUser,
 			'css' => [
 				'DataTables' => 'datatable/datatables.css',
 				'Toastr' => 'toastr/toastr.min.css',
@@ -27,6 +28,7 @@ class Users extends AdminController
 	public function create(){
 		$data = [
 			'titlepage' => 'Adicionar novo',
+            'currentUser' => $this->currentUser,
 		];
 		echo view('admin/users/user', $data);
 	}
@@ -69,6 +71,7 @@ class Users extends AdminController
 			$data = [
 				'titlepage' => 'Adicionar novo',
 				'validation'=> $this->validator,
+                'currentUser' => $this->currentUser,
 			];
 			return view('admin/users/user', $data);
         }else{
@@ -86,22 +89,19 @@ class Users extends AdminController
             $query = $usersModel->insert($values);
             if(!$query){
                 return redirect()->back()->with('fail','Não foi possível adicionar o usuário');
-                //return redirect()->to('register')->with('fail','something went wrong');
-            }else{
-                //redirect user to login page
-                //return redirect()->to('register')->with('success','You are now registred, please login in');
-                //redirect user to dashboard
-                //$last_id = $usersModel->insertID();
-                //session()->set('loggedUser', $last_id);                
+            }else{           
 				return redirect()->to('/admin/users')->with('success','Usuário adicionado com sucesso');
             }
         }
 	}
 	public function delete($id = null)
 	{		
+        if(is_null($id || empty($id))){
+			throw new \CodeIgniter\Exceptions\PageNotFoundException('Página não encontrada!');
+		}
 		$usersModel  = new \App\Models\UsersModel();
-		$query = $usersModel->delete($id);
-		if(!$query){
+		$result = $usersModel->delete($id);
+		if(!$result){
 			return redirect()->back()->with('fail','Não foi possível excluir o usuário');
 			//return redirect()->to('register')->with('fail','something went wrong');
 		}else{
@@ -109,4 +109,55 @@ class Users extends AdminController
 			return redirect()->to('/admin/users')->with('success','Usuário excluido com sucesso');
 		}
 	}
+    public function profile($id = null){
+        if(is_null($id || empty($id))){
+			throw new \CodeIgniter\Exceptions\PageNotFoundException('Página não encontrada!');
+		}
+        $usersModel  = new \App\Models\UsersModel();
+        $user = $usersModel->find($id);
+        if(empty($user) || is_null($user) ){
+			throw new \CodeIgniter\Exceptions\PageNotFoundException('Não consegui encontrar esse usuário');
+		}
+		$data = [
+			'titlepage' => 'Editar usuário',
+            'user' => $user,
+            'currentUser' => $this->currentUser,
+		];
+		echo view('admin/users/profile', $data);
+	}
+    public function upload($id = null){
+        if(is_null($id || empty($id))){
+			throw new \CodeIgniter\Exceptions\PageNotFoundException('Página não encontrada!');
+		}
+        $validation = $this->validate([
+            'profile-imagem' => [
+                'rules' => 'uploaded[profile-imagem]|mime_in[profile-imagem,image/png,image/jpg]|ext_in[profile-imagem,png,jpg]',
+                'errors' => [
+                    'uploaded' => 'Não foi possível fazer o upload',
+                    'mime_in' => 'Apenas faça upload de arquivos PNG  ou JPG',
+                    'ext_in' => 'Extensão da imagem inválida',
+                ],
+            ],
+        ]);
+		
+        if(!$validation){
+			$data = [
+				'titlepage' => 'Imagem do blog',
+                'validation'=> $this->validator,
+                'currentUser' => $this->currentUser,
+			];
+			echo view('admin/users/profile/'.$id,$data);            
+        }else{
+            $file = $this->request->getFile('profile-imagem');
+            if ($file->isValid() && ! $file->hasMoved()){
+                $newName = 'blog-personal-image.' . $file->getExtension();
+                if($file->move('assets/images/', $newName, true)){
+                    return redirect()->to('/admin/users/profile')->with('success','Imagem salva com sucesso');
+                }else{
+                    return redirect()->to('/admin/blog/imagem')->with('fail','Falha ao tentar salvar a imagem');
+                }            
+            }
+            return redirect()->to('/admin/blog/imagem')->with('fail','Falha ao enviar a imagem');
+        }
+    }
 }

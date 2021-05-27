@@ -9,6 +9,7 @@ class Dashboard extends AdminController
 	{
 		$data = [
 			'titlepage' => 'Dashboard',
+			'currentUser' => $this->currentUser,
 		];
 		return view('admin/template',$data);
 	}

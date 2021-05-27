@@ -32,7 +32,7 @@
 									<td><?= $users_item['email'] ?></td>
 									<td>
 										<div class="btn-group">
-											<a href="<?= base_url('/admin/users/edit/'.$users_item['id']) ?>" class="btn btn-sn bg-gradient-primary">Editar</a>
+											<a href="<?= base_url('/admin/users/profile/'.$users_item['id']) ?>" class="btn btn-sn bg-gradient-primary">Editar</a>
 											<?= createModalButton('Excluir','btn btn-sn bg-gradient-danger','#modal-danger-'.$users_item['id']) ?>
 										</div>
 									</td>

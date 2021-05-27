@@ -57,9 +57,10 @@ $routes->group('admin', ['filter' => 'AuthCheck'], function($routes){
 	$routes->group('users', function($routes){
 		$routes->add('/', 'Admin\Users::index');
 		$routes->add('create', 'Admin\Users::create');
-		$routes->add('edit/(:any)', 'Admin\Users::edit/$1');
+		$routes->add('profile/(:any)', 'Admin\Users::profile/$1');
 		$routes->add('store', 'Admin\Users::store');
 		$routes->add('delete/(:num)', 'Admin\Users::delete/$1');
+		$routes->add('upload/(:num)', 'Admin\Users::upload/$1');
 	});
 	$routes->group('blog', function($routes){
 		$routes->add('/', 'Admin\Blog::index');

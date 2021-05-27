@@ -20,6 +20,7 @@ class Posts extends AdminController
         $data = [
 			'titlepage' => 'Todos os posts',
 			'posts' => $postsModel->getPosts(),
+			'currentUser' => $this->currentUser,
 			'css' => [
 				'DataTables' => 'datatable/datatables.css',
 				'Toastr' => 'toastr/toastr.min.css',
@@ -35,6 +36,7 @@ class Posts extends AdminController
 	public function create(){
 		$data = [
 			'titlepage' => 'Adicionar novo',
+			'currentUser' => $this->currentUser,
 		];
 		echo view('admin/posts/post', $data);
 	}
@@ -69,7 +71,7 @@ class Posts extends AdminController
 			$data = [
 				'titlepage' => 'Adicionar novo',
 				'validation'=> $this->validator,
-				'view' => 'admin/posts/post',
+				'currentUser' => $this->currentUser,
 			];
 			return view('admin/posts/post', $data);
         }else{
@@ -91,6 +93,7 @@ class Posts extends AdminController
                 'body' => $body,
 				'slug' => url_title($this->request->getPost('title'), '-', TRUE),
 				'photo_post' => $newName,
+				'currentUser' => $this->currentUser,
             ];
 			$postsModel  = new \App\Models\PostsModel();
 			$query = $postsModel->save($values);
@@ -105,11 +108,14 @@ class Posts extends AdminController
 	}
 	public function edit($slug = null)
 	{
+		if(is_null($slug || empty($slug))){
+			throw new \CodeIgniter\Exceptions\PageNotFoundException('Página não encontrada!');
+		}
 		$model = new PostsModel();
 		$data = [
 			'post' => $model->getPosts($slug),
 		];
-		if(empty($data['post'])){
+		if(empty($data['post']) || is_null($data['post']) ){
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Não consegui encontrar esse post');
 		}
 		$data = [			
@@ -118,6 +124,7 @@ class Posts extends AdminController
 			'id' => $data['post']['id'],
 			'body' => $data['post']['body'],
 			'photo_post' => $data['post']['photo_post'],
+			'currentUser' => $this->currentUser,
 		];
 		echo view('admin/posts/post', $data);
 	}

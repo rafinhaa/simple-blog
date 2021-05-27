@@ -50,5 +50,7 @@ class AdminController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
+		$this->usersModel  = new \App\Models\UsersModel();
+        $this->currentUser = $this->usersModel->find(session()->get('loggedUser'));
 	}
 }

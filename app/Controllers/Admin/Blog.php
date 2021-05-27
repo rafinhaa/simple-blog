@@ -12,6 +12,7 @@ class Blog extends AdminController
         $data = [
             'titlepage' => 'Configurações',
             'config' => $blogModel->find(1),
+            'currentUser' => $this->currentUser,
             'css' => [
                 'Toastr' => 'toastr/toastr.min.css',
             ],
@@ -74,6 +75,7 @@ class Blog extends AdminController
 			$data = [
 				'titlepage' => 'Configurações',
                 'validation'=> $this->validator,
+                'currentUser' => $this->currentUser,
 			];
 			echo view('admin/blog/index',$data);
         }else{
@@ -116,6 +118,7 @@ class Blog extends AdminController
         $blogModel  = new \App\Models\BlogModel();
         $data = [
             'titlepage' => 'Imagem do blog',
+            'currentUser' => $this->currentUser,
             'css' => [
                 'Toastr' => 'toastr/toastr.min.css',
             ],
@@ -141,6 +144,7 @@ class Blog extends AdminController
 			$data = [
 				'titlepage' => 'Imagem do blog',
                 'validation'=> $this->validator,
+                'currentUser' => $this->currentUser,
 			];
 			echo view('admin/blog/imagem',$data);            
         }else{

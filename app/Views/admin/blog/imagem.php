@@ -13,7 +13,7 @@
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form action="<?= base_url('admin/blog/upload')?>" method="post" enctype="multipart/form-data">
+				<form action="<?= base_url('admin/users/upload')?>" method="post" enctype="multipart/form-data">
 					<?= csrf_field() ?>
 					<div class="card-body">
 						<div class="row align-items-center">
