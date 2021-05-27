@@ -26,16 +26,28 @@
 									<textarea class="form-control <?= isset($validation) && $validation->hasError('body') ? 'is-invalid' : '' ?>" name="body" id="InputTextAreaBody" rows="9" placeholder="Digite o que quiser ..."><?= isset($body) ? $body : set_value('body') ?></textarea>
 									<span class="text-danger"><?= isset($validation) ? display_error($validation,'body') : '' ?></span>
 								</div>
-								<div class="form-group">
-									<label for="InputFile">Imagem</label>
-									<div class="input">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="InputFile" name="post-imagem">
-											<label class="custom-file-label" for="InputFile">Escolher</label>
+								<div class="row align-items-center">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="InputFile">Imagem</label>
+											<div class="input">
+												<div class="custom-file">
+													<input type="file" class="custom-file-input" id="InputFile" name="post-imagem">
+													<label class="custom-file-label" for="InputFile">Escolher</label>
+												</div>
+												<span class="text-danger"><?= isset($validation) ? display_error($validation, 'post-imagem') : '' ?></span>
+											</div>
 										</div>
-										<span class="text-danger"><?= isset($validation) ? display_error($validation, 'post-imagem') : '' ?></span>
 									</div>
-								</div>
+										<div class="col-md-6 text-center">
+											<?php if(!empty($photo_post) && !is_null($photo_post)): ?>
+												<label for="InputFile">Foto atual</label>
+												<div class="form-group">											
+												<img class="img-fluid img-thumbnail" src="<?= base_url('upload/posts-img/'.$photo_post) ?>" alt="image" >
+											<?php endif; ?>
+										</div>
+									</div>
+								</div>								
 							</div>
 						</div>
 					</div>

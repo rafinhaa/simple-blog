@@ -20,7 +20,12 @@
 					<div class="item mb-5">
 						<div class="media">
 							<a href="<?= base_url('/post-blog/'.$post['slug']) ?>">
-								<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+								<?php if(!is_null($post['photo_post'])): ?>
+									<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="<?= base_url('upload/posts-img/'.$post['photo_post']) ?>" alt="image" >			
+								<?php else: ?>
+									<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+								<?php endif; ?>
+								
 							</a>
 							<div class="media-body">
 								<h3 class="title mb-1"><a href="<?= base_url('/post-blog/'.$post['slug']) ?>"><?= $post['title'] ?></a></h3>

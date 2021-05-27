@@ -1,3 +1,5 @@
+##### v0.0.31
+- Now when you delete a post with a photo, the photo will also be deleted 
 ##### v0.0.30
 - Finished colors select
 - Inicialized logic for upload photo in blog posts

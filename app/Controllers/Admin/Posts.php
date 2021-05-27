@@ -73,6 +73,7 @@ class Posts extends AdminController
 			];
 			return view('admin/posts/post', $data);
         }else{
+			$newName = null;
 			$id = $this->request->getpost('id');
             $title = $this->request->getpost('title');
             $body = $this->request->getpost('body');
@@ -116,16 +117,23 @@ class Posts extends AdminController
 			'titlepost' => $data['post']['title'],
 			'id' => $data['post']['id'],
 			'body' => $data['post']['body'],
+			'photo_post' => $data['post']['photo_post'],
 		];
 		echo view('admin/posts/post', $data);
 	}
 	public function delete($slug = null)
 	{		
+		helper('filesystem');
 		$postsModel  = new \App\Models\PostsModel();
+		$photo_del = $postsModel->where('slug', $slug)->findColumn('photo_post');
+		if(!empty($photo_del[0]) && !is_null($photo_del)  ){
+			if(!unlink(set_realpath('upload/posts-img/'.$photo_del[0]))){
+				return redirect()->back()->with('fail','Não foi possível excluir o post');
+			}
+		}		
 		$query = $postsModel->where('slug', $slug)->delete();
 		if(!$query){
 			return redirect()->back()->with('fail','Não foi possível excluir o post');
-			//return redirect()->to('register')->with('fail','something went wrong');
 		}else{
 			//redirect to posts page
 			return redirect()->to('/admin/posts')->with('success','Post excluído com sucesso!');
