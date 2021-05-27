@@ -146,18 +146,29 @@ class Users extends AdminController
                 'validation'=> $this->validator,
                 'currentUser' => $this->currentUser,
 			];
-			echo view('admin/users/profile/'.$id,$data);            
+			//echo view('admin/users/profile/'.$id,$data);      
+            return redirect()->back()->withInput();       
         }else{
             $file = $this->request->getFile('profile-imagem');
             if ($file->isValid() && ! $file->hasMoved()){
-                $newName = 'blog-personal-image.' . $file->getExtension();
-                if($file->move('assets/images/', $newName, true)){
-                    return redirect()->to('/admin/users/profile')->with('success','Imagem salva com sucesso');
+                $newName = $file->getRandomName();
+                if($file->move('upload/userprofile/', $newName, true)){
+                    $values = [
+                        'id' => $id,
+                        'profile_img' => $newName,
+                    ];
+                    $usersModel  = new \App\Models\UsersModel();
+                    $result = $usersModel->save($values);
+                    if(!$result){
+                        return redirect()->back()->with('fail','Falha ao tentar salvar a imagem');
+                        //return redirect()->to('register')->with('fail','something went wrong');
+                    }
+                    return redirect()->to('/admin/users/profile/'.$id)->with('success','Imagem salva com sucesso');
                 }else{
-                    return redirect()->to('/admin/blog/imagem')->with('fail','Falha ao tentar salvar a imagem');
+                    return redirect()->to('/admin/users/profile/'.$id)->with('fail','Falha ao tentar salvar a imagem');
                 }            
             }
-            return redirect()->to('/admin/blog/imagem')->with('fail','Falha ao enviar a imagem');
+            return redirect()->to('/admin/users/profile/'.$id)->with('fail','Falha ao enviar a imagem');
         }
     }
 }

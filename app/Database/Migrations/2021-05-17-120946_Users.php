@@ -23,6 +23,11 @@ class Users extends Migration
 		],
 			'password' => [
 			'type' => 'TEXT',
+		],		
+			'profile_img' => [
+			'type' => 'TEXT',
+			'default' => null,
+			'null' => true,
 		],
 			'created_at' => [
 			'type' => 'DATETIME',

@@ -1,3 +1,5 @@
+##### v0.0.33
+- Finished View admin/profile
 ##### v0.0.32
 - Created View admin/profile
 - Created method for upload image profile

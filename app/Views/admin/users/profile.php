@@ -6,9 +6,11 @@
 		<div class="card card-primary card-outline">
 			<div class="card-body box-profile">
 				<div class="text-center">
-					<img class="profile-user-img img-fluid img-circle"
-						src="../../dist/img/user4-128x128.jpg"
-						alt="User profile picture">
+					<?php if(file_exists(set_realpath('upload/userprofile/'.$currentUser['profile_img']))): ?>
+						<img src="<?= base_url('/upload/userprofile/'.$currentUser['profile_img']) ?>" class="img-fluid img-thumbnail img-circle"" alt="User Image">
+					<?php else: ?>
+						<img class="profile-user-img img-fluid img-circle" src="<?= base_url('/adminlte/img/user2-160x160.jpg') ?>" alt="User profile picture">
+					<?php endif; ?>						
 				</div>
 				<h3 class="profile-username text-center"><?= $user['name'] ?></h3>
 				<p class="text-muted text-center"><?= $user['email'] ?></p>				
@@ -82,11 +84,11 @@
                                 <div class="col-md-6 text-center">
                                     <label for="InputFile">Foto atual</label>
                                     <div class="form-group">
-                                        <?php if(file_exists('assets/images/blog-personal-image.png')): ?>
-                                            <img class="img-fluid img-thumbnail img-circle" src="<?= base_url('assets/images/blog-personal-image.png') ?>" alt="image" >			
-                                        <?php else: ?>
-                                            <img class="profile-user-img img-fluid img-circle" src="<?= base_url('assets/images/profile.png') ?>" alt="image" >
-                                        <?php endif; ?>
+										<?php if(file_exists(set_realpath('upload/userprofile/'.$currentUser['profile_img']))): ?>
+											<img src="<?= base_url('/upload/userprofile/'.$currentUser['profile_img']) ?>" class="img-fluid img-thumbnail img-circle"" alt="User Image">
+										<?php else: ?>
+											<img class="profile-user-img img-fluid img-circle" src="<?= base_url('/adminlte/img/user2-160x160.jpg') ?>" alt="image" >
+										<?php endif; ?>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Enviar</button>

@@ -96,8 +96,8 @@ class Posts extends AdminController
 				'currentUser' => $this->currentUser,
             ];
 			$postsModel  = new \App\Models\PostsModel();
-			$query = $postsModel->save($values);
-			if(!$query){
+			$result = $postsModel->save($values);
+			if(!$result){
                 return redirect()->back()->with('fail','something went wrong');
                 //return redirect()->to('register')->with('fail','something went wrong');
             }else{
@@ -130,7 +130,6 @@ class Posts extends AdminController
 	}
 	public function delete($slug = null)
 	{		
-		helper('filesystem');
 		$postsModel  = new \App\Models\PostsModel();
 		$photo_del = $postsModel->where('slug', $slug)->findColumn('photo_post');
 		if(!empty($photo_del[0]) && !is_null($photo_del)  ){

@@ -32,6 +32,7 @@ class AdminController extends Controller
 		'url',
 		'modal',
 		'alert',
+		'filesystem',
 	];
 
 	/**
