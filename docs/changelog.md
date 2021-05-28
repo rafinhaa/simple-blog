@@ -1,3 +1,5 @@
+##### v0.0.34
+- Fixed all bugs in photo upload (Controllers posts and users )
 ##### v0.0.33
 - Finished View admin/profile
 ##### v0.0.32

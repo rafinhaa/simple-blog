@@ -96,6 +96,10 @@ class Posts extends AdminController
 				'currentUser' => $this->currentUser,
             ];
 			$postsModel  = new \App\Models\PostsModel();
+			$info = $postsModel->where('id', $id)->findColumn('photo_post');
+			if(!empty($info[0]) || !is_null($info[0]) ){
+				unlink(set_realpath('upload/posts-img/'.$info[0]));
+			}
 			$result = $postsModel->save($values);
 			if(!$result){
                 return redirect()->back()->with('fail','something went wrong');
@@ -132,7 +136,7 @@ class Posts extends AdminController
 	{		
 		$postsModel  = new \App\Models\PostsModel();
 		$photo_del = $postsModel->where('slug', $slug)->findColumn('photo_post');
-		if(!empty($photo_del[0]) && !is_null($photo_del)  ){
+		if(!empty($photo_del[0]) && !is_null($photo_del[0])  ){
 			if(!unlink(set_realpath('upload/posts-img/'.$photo_del[0]))){
 				return redirect()->back()->with('fail','Não foi possível excluir o post');
 			}

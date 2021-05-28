@@ -6,8 +6,8 @@
 		<div class="card card-primary card-outline">
 			<div class="card-body box-profile">
 				<div class="text-center">
-					<?php if(file_exists(set_realpath('upload/userprofile/'.$currentUser['profile_img']))): ?>
-						<img src="<?= base_url('/upload/userprofile/'.$currentUser['profile_img']) ?>" class="img-fluid img-thumbnail img-circle"" alt="User Image">
+					<?php if( !empty($user['profile_img']) && file_exists(set_realpath('upload/userprofile/'.$user['profile_img']))): ?>
+						<img src="<?= base_url('/upload/userprofile/'.$user['profile_img']) ?>" class="img-fluid img-thumbnail img-circle"" alt="User Image">
 					<?php else: ?>
 						<img class="profile-user-img img-fluid img-circle" src="<?= base_url('/adminlte/img/user2-160x160.jpg') ?>" alt="User profile picture">
 					<?php endif; ?>						
@@ -84,8 +84,8 @@
                                 <div class="col-md-6 text-center">
                                     <label for="InputFile">Foto atual</label>
                                     <div class="form-group">
-										<?php if(file_exists(set_realpath('upload/userprofile/'.$currentUser['profile_img']))): ?>
-											<img src="<?= base_url('/upload/userprofile/'.$currentUser['profile_img']) ?>" class="img-fluid img-thumbnail img-circle"" alt="User Image">
+										<?php if(!empty($user['profile_img']) && file_exists(set_realpath('upload/userprofile/'.$user['profile_img']))): ?>											
+											<img src="<?= base_url('/upload/userprofile/'.$user['profile_img']) ?>" class="img-fluid img-thumbnail img-circle"" alt="User Image">
 										<?php else: ?>
 											<img class="profile-user-img img-fluid img-circle" src="<?= base_url('/adminlte/img/user2-160x160.jpg') ?>" alt="image" >
 										<?php endif; ?>

@@ -86,8 +86,8 @@ class Users extends AdminController
             ];
 
             $usersModel = new \App\Models\UsersModel();
-            $query = $usersModel->insert($values);
-            if(!$query){
+            $result = $usersModel->insert($values);
+            if(!$result){
                 return redirect()->back()->with('fail','Não foi possível adicionar o usuário');
             }else{           
 				return redirect()->to('/admin/users')->with('success','Usuário adicionado com sucesso');
@@ -100,6 +100,12 @@ class Users extends AdminController
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Página não encontrada!');
 		}
 		$usersModel  = new \App\Models\UsersModel();
+        $photo_del = $usersModel->where('id', $id)->findColumn('profile_img');
+		if(!empty($photo_del[0]) && !is_null($photo_del[0])  ){
+			if(!unlink(set_realpath('upload/userprofile/'.$photo_del[0]))){
+				return redirect()->back()->with('fail','Não foi possível excluir o usuário');
+			}
+		}
 		$result = $usersModel->delete($id);
 		if(!$result){
 			return redirect()->back()->with('fail','Não foi possível excluir o usuário');
@@ -158,6 +164,10 @@ class Users extends AdminController
                         'profile_img' => $newName,
                     ];
                     $usersModel  = new \App\Models\UsersModel();
+                    $info = $usersModel->where('id', $id)->findColumn('profile_img');
+                    if(!empty($info[0]) || !is_null($info[0]) ){
+                        unlink(set_realpath('upload/userprofile/'.$info[0]));
+                    }
                     $result = $usersModel->save($values);
                     if(!$result){
                         return redirect()->back()->with('fail','Falha ao tentar salvar a imagem');
