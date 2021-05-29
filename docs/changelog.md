@@ -1,3 +1,6 @@
+##### v0.0.35
+- View blog/post-blog now show post content
+- Removed demo options in blog template
 ##### v0.0.34
 - Fixed all bugs in photo upload (Controllers posts and users )
 ##### v0.0.33
