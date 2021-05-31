@@ -9,9 +9,9 @@
 				<p>Quantidade de Posts</p>
 			</div>
 			<div class="icon">
-				<i class="ion ion-bag"></i>
+				<i class="nav-icon fas fa-pen"></i>
 			</div>
-			<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+			<div class="small-box-footer"></div>
 		</div>
 	</div>
 	<!-- ./col -->
@@ -20,12 +20,12 @@
 		<div class="small-box bg-success">
 			<div class="inner">
 				<h3><?= $totalViews ?></h3>
-				<p>Bounce Rate</p>
+				<p>Visualizações Totais</p>
 			</div>
 			<div class="icon">
-				<i class="ion ion-stats-bars"></i>
+				<i class="fas fa-chart-line"></i>
 			</div>
-			<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+			<div class="small-box-footer"></div>
 		</div>
 	</div>
 	<!-- ./col -->
@@ -39,7 +39,7 @@
 			<div class="icon">
 				<i class="ion ion-person-add"></i>
 			</div>
-			<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+			<div class="small-box-footer"></div>
 		</div>
 	</div>
 	<!-- ./col -->
@@ -53,7 +53,7 @@
 			<div class="icon">
 				<i class="ion ion-pie-graph"></i>
 			</div>
-			<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+			<div class="small-box-footer"></div>
 		</div>
 	</div>
 	<!-- ./col -->
@@ -77,7 +77,7 @@
 						<?php if (!empty($posts) && is_array($posts)) : ?>
 						<?php foreach ($posts as $posts_item): ?>
 						<tr>
-							<td><?= $posts_item['title'] ?></td>
+							<td><a href="<?= base_url('/post-blog/'.$posts_item['slug']) ?>"><?= $posts_item['title'] ?></a></td>
 							<td><?= $posts_item['views'] ?></td>
 						</tr>
 						<?php endforeach; ?>

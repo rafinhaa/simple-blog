@@ -8,7 +8,9 @@
 		</header>
 		<div class="blog-post-body">
 			<figure class="blog-banner">
-				<a href="https://made4dev.com"><img class="img-fluid" src="<?= base_url('upload/posts-img/'.$post['photo_post']) ?>" alt="image"></a>
+				<?php if(!empty($post['photo_post'])): ?>
+					<a href="https://made4dev.com"><img class="img-fluid" src="<?= base_url('upload/posts-img/'.$post['photo_post']) ?>" alt="image"></a>
+				<?php endif; ?>
 			</figure>
 			<p><?= $post['body'] ?></p>
 		</div>
@@ -59,7 +61,7 @@
 		<h2 class="title">Promo Section Heading</h2>
 		<p>You can use this section to promote your side projects etc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
 		<figure class="promo-figure">
-			<a href="https://made4dev.com" target="_blank"><img class="img-fluid" src="assets/images/promo-banner.jpg" alt="image"></a>
+			<a href="https://made4dev.com" target="_blank"><img class="img-fluid" src="../assets/images/promo-banner.jpg" alt="image"></a>
 		</figure>
 	</div>
 	<!--//container-->

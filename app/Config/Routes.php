@@ -36,6 +36,7 @@ $routes->group('/', function($routes){
 	$routes->add('', 'Blog\Index::index');
 	$routes->add('post-blog/(:any)', 'Blog\Index::post_blog/$1');
 	$routes->addRedirect('post-blog', '/');
+	$routes->add('about', 'Blog\Index::about/$1');
 }); 
 
 $routes->group('login', function($routes){    

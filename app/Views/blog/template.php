@@ -33,7 +33,7 @@
 			<div id="navigation" class="collapse navbar-collapse flex-column" >
 				<div class="profile-section pt-3 pt-lg-0">
                     <?php if(file_exists('assets/images/blog-personal-image.png')): ?>
-				        <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/blog-personal-image.png" alt="image" >			
+				        <img class="profile-image mb-3 rounded-circle mx-auto" src="<?= base_url('assets/images/blog-personal-image.png')?>" alt="image" >			
                     <?php else: ?>
                         <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.png" alt="image" >
                     <?php endif; ?>
@@ -63,10 +63,7 @@
 					    <a class="nav-link" href="<?= base_url('/') ?>"><i class="fas fa-home fa-fw mr-2"></i>Blog Home <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-					    <a class="nav-link" href="blog-post.html"><i class="fas fa-bookmark fa-fw mr-2"></i>Blog Post</a>
-					</li>
-					<li class="nav-item">
-					    <a class="nav-link" href="about.html"><i class="fas fa-user fa-fw mr-2"></i>About Me</a>
+					    <a class="nav-link" href="<?= base_url('/about')?>"><i class="fas fa-user fa-fw mr-2"></i>About Me</a>
 					</li>
 				</ul>
 				

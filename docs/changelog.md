@@ -1,3 +1,7 @@
+##### v0.0.38
+- Created Route for /about url
+- Created View Blog/about
+- Add news itens in View dashboard
 ##### v0.0.37
 - Update README.md
 - Created field views in Modal posts

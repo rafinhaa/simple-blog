@@ -41,4 +41,11 @@ class Index extends BlogController
 		$this->postsModel->where('id', $data['post']['id'])->set(['views' => $new_views])->update();
 		return view('blog/post-blog',$data);
 	}
+	public function about()
+	{		
+        $data = [
+			'config' => $this->configBlog->find(1),
+		];
+		return view('blog/about',$data);
+	}
 }
