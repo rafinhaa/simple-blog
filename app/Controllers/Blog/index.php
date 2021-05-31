@@ -7,14 +7,25 @@ class Index extends BlogController
 {
 	public function index()
 	{	
-		$data = [
-			'config' => $this->configBlog->find(1),
-			'posts' => $this->postsModel->getPosts(false,5),
-			//custom pagination
-			'currentPage' => $this->request->getVar('page_blog') ? $this->request->getVar('page_blog') : 1,
-			'pager' => $this->postsModel->pager,
-		];
-		return view('blog/posts',$data);
+		if($this->request->getMethod() === 'get'){
+			$search = $this->request->getGet('search');
+			$data = [
+				'config' => $this->configBlog->find(1),
+				'posts' => $this->postsModel->like('title',$search)->paginate(5,'blog'),
+				'currentPage' => $this->request->getVar('page_blog') ? $this->request->getVar('page_blog') : 1,
+				'pager' => $this->postsModel->pager,
+			];
+			return view('blog/posts',$data);
+		}else{
+			$data = [
+				'config' => $this->configBlog->find(1),
+				'posts' => $this->postsModel->getPosts(false,5),
+				//custom pagination
+				'currentPage' => $this->request->getVar('page_blog') ? $this->request->getVar('page_blog') : 1,
+				'pager' => $this->postsModel->pager,
+			];
+			return view('blog/posts',$data);
+		}		
 	}
 
 	public function post_blog($slug = null)

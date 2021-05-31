@@ -110,7 +110,7 @@ class Blog extends AdminController
                 //return redirect()->to('register')->with('fail','something went wrong');
             }else{
                 //$this->index();
-                return redirect()->to('/admin/blog')->with('success','Configurações salvas com sucesso');
+                return redirect()->to('/admin/blog')->with('success','Configurações salvas com sucesso')->withInput();
             }
         }
 	}

@@ -1,3 +1,5 @@
+##### v0.0.36
+- In Controller Admin/Blog the method index now accept get method for any search in view Blog/posts
 ##### v0.0.35
 - View blog/post-blog now show post content
 - Removed demo options in blog template
