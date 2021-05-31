@@ -7,7 +7,7 @@ class Index extends BlogController
 {
 	public function index()
 	{	
-		if($this->request->getMethod() === 'get'){
+		if($this->request->getMethod() === 'get' && !empty($this->request->getGet('search')) ){
 			$search = $this->request->getGet('search');
 			$data = [
 				'config' => $this->configBlog->find(1),
@@ -37,6 +37,8 @@ class Index extends BlogController
 		if(empty($data['post'])){
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('Não consegui encontrar esse post');
 		}
+		$new_views = $data['post']['views'] + 1;
+		$this->postsModel->where('id', $data['post']['id'])->set(['views' => $new_views])->update();
 		return view('blog/post-blog',$data);
 	}
 }

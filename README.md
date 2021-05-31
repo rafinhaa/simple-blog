@@ -36,6 +36,11 @@ composer install
 php spark migrate
 ```
 
+#### Execute seeders
+```bash
+php spark db:seed UsersSeeder
+```
+
 ## ℹ️ Info
 #### Credentials
 - Usuário: admin@admin.com

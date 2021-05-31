@@ -1,3 +1,7 @@
+##### v0.0.37
+- Update README.md
+- Created field views in Modal posts
+- Inicialized View admin/dashboard
 ##### v0.0.36
 - In Controller Admin/Blog the method index now accept get method for any search in view Blog/posts
 ##### v0.0.35
