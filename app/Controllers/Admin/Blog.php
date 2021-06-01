@@ -160,4 +160,68 @@ class Blog extends AdminController
             return redirect()->to('/admin/blog/imagem')->with('fail','Falha ao enviar a imagem');
         }
     }
+    public function about(){
+		$aboutModel  = new \App\Models\AboutModel();
+        if ($this->request->getMethod() == "post") {			
+            $validation = $this->validate([
+                'title-page' => [
+                    'rules' => 'required|min_length[3]|max_length[25]',
+                    'errors' => [
+                        'required' => 'Você precisa digitar o título da pagína', 
+                        'min_length' => 'O título deve ter pelo menos 3 caracteres',
+                        'max_length' => 'O título não deve ter mais de 25 caracteres',
+                    ],
+                ],
+                'about' => [
+                    'rules' => 'required|min_length[3]',
+                    'errors' => [
+                        'required' => 'Digite sobre você',
+                        'min_length' => 'A biografia deve ter pelo menos 3 caracteres',
+                    ],
+                ],
+            ]);
+            
+            if(!$validation){
+                $data = [
+                    'titlepage' => 'Sobre o autor',
+                    'validation'=> $this->validator,
+                    'currentUser' => $this->currentUser,
+                ];
+                echo view('admin/blog/about',$data);
+            }else{
+                $title = $this->request->getpost('title-page');
+                $about = $this->request->getpost('about');
+                //columns in db
+                $values = [
+                    'id' => 1,
+                    'title_page'=> $title,
+                    'about'=> $about,               
+                ];
+                if(!$aboutModel->find(1)){
+                    $result = $aboutModel->insert($values);
+                }else{
+                    $result = $aboutModel->save($values);
+                }
+                if(!$result){
+                    return redirect()->back()->with('fail','Não foi possível salvar as configurações');
+                }else{
+                    return redirect()->back()->with('success','Configurações salvas com sucesso');
+                }
+            }
+        }     
+
+        $data = [
+            'titlepage' => 'Sobre o autor',
+            'config' => $aboutModel->find(1),
+            'currentUser' => $this->currentUser,
+            'css' => [
+                'Toastr' => 'toastr/toastr.min.css',
+            ],
+            'scripts' => [
+                'Toastr' => 'toastr/toastr.min.js',
+            ],
+        ];
+        return view('admin/blog/about',$data);
+    }
+
 }

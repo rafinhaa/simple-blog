@@ -47,5 +47,6 @@ class BlogController extends Controller
 		// E.g.: $this->session = \Config\Services::session();
 		$this->configBlog  = new \App\Models\BlogModel();
 		$this->postsModel  = new \App\Models\PostsModel();
+		$this->aboutModel  = new \App\Models\AboutModel();
 	}
 }

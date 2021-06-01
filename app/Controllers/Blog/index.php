@@ -14,6 +14,7 @@ class Index extends BlogController
 				'posts' => $this->postsModel->like('title',$search)->paginate(5,'blog'),
 				'currentPage' => $this->request->getVar('page_blog') ? $this->request->getVar('page_blog') : 1,
 				'pager' => $this->postsModel->pager,
+				'active_home' => true,
 			];
 			return view('blog/posts',$data);
 		}else{
@@ -23,6 +24,7 @@ class Index extends BlogController
 				//custom pagination
 				'currentPage' => $this->request->getVar('page_blog') ? $this->request->getVar('page_blog') : 1,
 				'pager' => $this->postsModel->pager,
+				'active_home' => true,
 			];
 			return view('blog/posts',$data);
 		}		
@@ -30,8 +32,8 @@ class Index extends BlogController
 
 	public function post_blog($slug = null)
 	{		
-        $data = [
-			'config' => $this->configBlog->find(1),
+        $data = [			
+ 			'config' => $this->configBlog->find(1),
 			'post' => $this->postsModel->getPosts($slug),
 		];
 		if(empty($data['post'])){
@@ -45,6 +47,8 @@ class Index extends BlogController
 	{		
         $data = [
 			'config' => $this->configBlog->find(1),
+			'about' => $this->aboutModel->find(1),
+			'active_about' => true,
 		];
 		return view('blog/about',$data);
 	}

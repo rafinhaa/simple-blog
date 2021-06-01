@@ -1,3 +1,8 @@
+##### v0.0.39
+- Created method about in Controller Admin/blog
+- Created Route for method about in Controller Admin/blog
+- Created View admin/about
+- Created Migration for about
 ##### v0.0.38
 - Created Route for /about url
 - Created View Blog/about

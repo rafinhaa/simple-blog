@@ -37,7 +37,7 @@
                     <?php else: ?>
                         <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/profile.png" alt="image" >
                     <?php endif; ?>
-					<div class="bio mb-3"><?= esc($config['bio']) ?><br><a href="about.html">Find out more about me</a></div><!--//bio-->
+					<div class="bio mb-3"><?= esc($config['bio']) ?><br></div><!--//bio-->
 					<ul class="social-list list-inline py-3 mx-auto">
                         <?php if (!empty($config['social_twitter'])): ?>
                             <li class="list-inline-item"><a href="<?= $config['social_twitter'] ?>"><i class="fab fa-twitter fa-fw"></i></a></li>
@@ -59,11 +59,11 @@
 				</div><!--//profile-section-->
 				
 				<ul class="navbar-nav flex-column text-left">
-					<li class="nav-item active">
+					<li class="nav-item <?= isset($active_home) && $active_home == true ? 'active' : ''?>">
 					    <a class="nav-link" href="<?= base_url('/') ?>"><i class="fas fa-home fa-fw mr-2"></i>Blog Home <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-					    <a class="nav-link" href="<?= base_url('/about')?>"><i class="fas fa-user fa-fw mr-2"></i>About Me</a>
+					<li class="nav-item <?= isset($active_about) && $active_about == true ? 'active' : ''?>">
+					    <a class="nav-link" href="<?= base_url('/about')?>"><i class="fas fa-user fa-fw mr-2"></i>About Me </a>
 					</li>
 				</ul>
 				

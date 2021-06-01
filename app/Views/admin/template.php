@@ -140,6 +140,11 @@
 											<p>Imagem</p>
 										</a>
 									</li>
+									<li class="nav-item">
+										<a href="<?= base_url('/admin/blog/about') ?>" class="nav-link">
+											<p>Sobre</p>
+										</a>
+									</li>
 								</ul>	
 							</li>
 							<li class="nav-item">
