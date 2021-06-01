@@ -59,6 +59,7 @@
                                     <span class="text-danger"><?= isset($validation) ? display_error($validation,'cpassword') : '' ?></span>
 								</div>
 							</div>
+							<input type="hidden" name="id" value="<?= isset($user['id']) ? $user['id'] : set_value('id') ?>">
 							<div class="form-group row">
 								<div class="offset-sm-2 col-sm-10">
 									<button type="submit" class="btn btn-danger">Enviar</button>
@@ -91,6 +92,7 @@
 										<?php endif; ?>
                                     </div>
                                 </div>
+								<input type="hidden" name="id" value="<?= isset($user['id']) ? $user['id'] : set_value('id') ?>">
                                 <button type="submit" class="btn btn-primary">Enviar</button>
                             </div>
                         </form>

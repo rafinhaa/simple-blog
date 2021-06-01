@@ -43,7 +43,7 @@ class Posts extends AdminController
 	public function store(){
 		$validation = $this->validate([
             'title' => [
-                'rules' => 'required|min_length[3]|max_length[255]|is_unique[posts.slug]',
+                'rules' => 'required|min_length[3]|max_length[255]',
                 'errors' => [
                     'required' => 'O título é necessário',
                     'min_length' => 'O título está muito pequeno',

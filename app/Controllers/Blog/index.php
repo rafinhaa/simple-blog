@@ -45,11 +45,17 @@ class Index extends BlogController
 	}
 	public function about()
 	{		
+		$about = $this->aboutModel->find(1);
+		if(empty($about)){
+			return redirect()->to('admin/blog/about');
+		}
         $data = [
 			'config' => $this->configBlog->find(1),
-			'about' => $this->aboutModel->find(1),
+			'about' => $about,
 			'active_about' => true,
 		];
+
+		
 		return view('blog/about',$data);
 	}
 }

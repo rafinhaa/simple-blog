@@ -32,7 +32,7 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->group('/', function($routes){    
+$routes->group('/', ['filter' => 'AdminConfig'],function($routes){    
 	$routes->add('', 'Blog\Index::index');
 	$routes->add('post-blog/(:any)', 'Blog\Index::post_blog/$1');
 	$routes->addRedirect('post-blog', '/');

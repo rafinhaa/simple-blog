@@ -1,3 +1,7 @@
+##### v0.0.40
+- Created Filter CheckAdminConfig
+- Added filter in routes /
+- Fixed another bugs
 ##### v0.0.39
 - Created method about in Controller Admin/blog
 - Created Route for method about in Controller Admin/blog
