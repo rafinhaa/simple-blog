@@ -1,3 +1,5 @@
+##### v0.0.42
+- Fixed bug in View profile where the current photo user is not displayed
 ##### v0.0.41
 - Fixed bug in View profile
 ##### v0.0.40
