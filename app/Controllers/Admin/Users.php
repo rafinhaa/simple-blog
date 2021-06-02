@@ -36,13 +36,14 @@ class Users extends AdminController
         if ( !empty($this->request->getPost('id'))) {
             $validation = $this->validate([
                 'name' => [
-                    'rules' => 'required',
+                    'rules' => 'required|min_length[2]',
                     'errors' => [
                         'required' => 'Seu nome é necessário',
+                        'min_length' => 'Seu nome deve ter pelo menos 2 caracteres',
                     ],
                 ],
                 'email' => [
-                    'rules' => 'permit_empty|valid_email',
+                    'rules' => 'valid_email',
                     'errors' => [
                         'valid_email' => 'Você deve inserir um email válido',
                     ],
@@ -65,13 +66,7 @@ class Users extends AdminController
             ]);
     
             if(!$validation){
-                $data = [
-                    'titlepage' => 'Adicionar novo',
-                    'validation'=> $this->validator,
-                    'currentUser' => $this->currentUser,
-                ];
-                //return view('admin/users/profile', $data);
-                return redirect()->back()->withInput();
+                return redirect()->back()->withInput()->with('validation', $this->validator);
             }else{
                 $id = $this->request->getpost('id');
                 $name = $this->request->getpost('name');
@@ -84,7 +79,7 @@ class Users extends AdminController
                     'email'=> $email,                    
                 ];
                 if(!empty($password) || !is_null($password)){
-                    array_push($values,['password' => Hash::make($password)]);
+                    $values['password'] = Hash::make($password);
                 }
                 $usersModel = new \App\Models\UsersModel();
                 $result = $usersModel->save($values);
@@ -192,7 +187,13 @@ class Users extends AdminController
 		$data = [
 			'titlepage' => 'Editar usuário',
             'user' => $user,
-            'currentUser' => $this->currentUser,
+            'currentUser' => $this->currentUser,            
+			'css' => [
+				'Toastr' => 'toastr/toastr.min.css',
+			],
+			'scripts' => [
+				'Toastr' => 'toastr/toastr.min.js',
+			],
 		];
 		echo view('admin/users/profile', $data);
 	}
@@ -202,8 +203,9 @@ class Users extends AdminController
 		}
         $validation = $this->validate([
             'profile-imagem' => [
-                'rules' => 'uploaded[profile-imagem]|mime_in[profile-imagem,image/png,image/jpg]|ext_in[profile-imagem,png,jpg]',
+                'rules' => 'required|uploaded[profile-imagem]|mime_in[profile-imagem,image/png,image/jpg]|ext_in[profile-imagem,png,jpg]',
                 'errors' => [
+                    'required' => 'Você não enviou nenhuma imagem',
                     'uploaded' => 'Não foi possível fazer o upload',
                     'mime_in' => 'Apenas faça upload de arquivos PNG  ou JPG',
                     'ext_in' => 'Extensão da imagem inválida',
@@ -212,13 +214,7 @@ class Users extends AdminController
         ]);
 		
         if(!$validation){
-			$data = [
-				'titlepage' => 'Imagem do blog',
-                'validation'=> $this->validator,
-                'currentUser' => $this->currentUser,
-			];
-			//echo view('admin/users/profile/'.$id,$data);      
-            return redirect()->back()->withInput();       
+			return redirect()->back()->withInput()->with('validation', $this->validator);       
         }else{
             $file = $this->request->getFile('profile-imagem');
             if ($file->isValid() && ! $file->hasMoved()){

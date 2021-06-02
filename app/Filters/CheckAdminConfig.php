@@ -12,7 +12,7 @@ class CheckAdminConfig implements FilterInterface
     {        
         $blogModel  = new \App\Models\BlogModel();
         if( empty($blogModel->find(1)) ){
-            return redirect()->to('/admin');
+            return redirect()->to('/admin/blog');
         }
 
     }

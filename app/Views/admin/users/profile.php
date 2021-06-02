@@ -31,7 +31,12 @@
 			<!-- /.card-header -->
 			<div class="card-body">
 				<div class="tab-content">
-					<div class="active tab-pane" id="settings">
+					<div class="active tab-pane" id="settings">					
+						<?php						
+							if(!empty(session()->get('validation'))){
+								$validation = session()->get('validation');				
+							}
+						?>
 						<form class="form-horizontal" action="<?= base_url('admin/users/store')?>" method="post">
 							<div class="form-group row">
 								<label for="inputName" class="col-sm-2 col-form-label">Nome</label>
@@ -72,16 +77,22 @@
                         <form action="<?= base_url('admin/users/upload/'.$user['id'])?>" method="post" enctype="multipart/form-data">
                             <?= csrf_field() ?>
                             <div class="row align-items-center">
-                                <div class="col-md-6">
-                                    <label for="InputFile">Imagem</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="InputFile" name="profile-imagem">
-                                            <label class="custom-file-label" for="InputFile">Escolher</label>
-                                        </div>
-                                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'profile-imagem') : '' ?></span>
-                                    </div>
-                                </div>
+							
+									<div class="col-md-6">
+										<div class="row">								
+											<label for="InputFile">Imagem</label>
+											<div class="input-group">
+												
+												<div class="custom-file">
+													<input type="file" class="custom-file-input" id="InputFile" name="profile-imagem">
+													<label class="custom-file-label" for="InputFile">Escolher</label>											
+												</div>                                    
+											</div>
+										</div>
+										<div class="row">
+											<span class="text-danger"><?= isset($validation) ? display_error($validation, 'profile-imagem') : '' ?></span>
+										</div>  
+									</div>
                                 <div class="col-md-6 text-center">
                                     <label for="InputFile">Foto atual</label>
                                     <div class="form-group">

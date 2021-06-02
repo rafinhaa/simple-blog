@@ -1,3 +1,5 @@
+##### v0.0.41
+- Fixed bug in View profile
 ##### v0.0.40
 - Created Filter CheckAdminConfig
 - Added filter in routes /
