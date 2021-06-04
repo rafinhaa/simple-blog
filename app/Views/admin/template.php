@@ -52,7 +52,7 @@
 							<?php endif; ?>
 						</div>
 						<div class="info">
-							<a href="#" class="d-block"><?= $currentUser['name'] ?></a>
+							<a href="<?= base_url('/admin/users/profile/'.$currentUser['id']) ?>" class="d-block"><?= $currentUser['name'] ?></a>
 						</div>
 					</div>
 					<nav class="mt-2">
