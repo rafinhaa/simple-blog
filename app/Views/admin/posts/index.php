@@ -41,7 +41,7 @@
 								<?php endforeach; ?>
 							<?php else : ?>
 								<tr>
-									<td colsspan="4">Não foi possível encontrar qualquer postagem para você</td>
+									<td colspan="4">Não foi possível encontrar qualquer postagem para você</td>
 								</tr>
 							<?php endif ?>
 						</tbody>

@@ -42,9 +42,10 @@
 							<?php if(!empty($photo_post) && !is_null($photo_post)): ?>
 							<label for="InputFile">Foto atual</label>
 							<div class="form-group">											
-								<img class="img-fluid img-thumbnail" src="<?= base_url('upload/posts-img/'.$photo_post) ?>" alt="image" >
-								<?php endif; ?>
+								<img class="img-fluid img-thumbnail" src="<?= base_url('upload/posts-img/'.$photo_post) ?>" alt="image" >								
 							</div>
+							<?php endif; ?>							
+						</div>
 						</div>
 					</div>
 					<div class="card-footer">

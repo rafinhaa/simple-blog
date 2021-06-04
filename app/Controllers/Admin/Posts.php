@@ -58,7 +58,7 @@ class Posts extends AdminController
                 ],                
             ],						
 			'blog-imagem' => [
-                'rules' => 'uploaded[post-imagem]|mime_in[blog-imagem,image/png,image/jpg]|ext_in[blog-imagem,png,jpg]',
+                'rules' => 'permit_empty|uploaded[blog-imagem]|mime_in[blog-imagem,image/png,image/jpg]|ext_in[blog-imagem,png,jpg]',
                 'errors' => [
                     'uploaded' => 'Não foi possível fazer o upload',
                     'mime_in' => 'Apenas faça upload de arquivos PNG  ou JPG',

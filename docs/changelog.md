@@ -1,3 +1,5 @@
+##### v0.0.46
+- Fixed layout in View admin/post/create
 ##### v0.0.45
 - Fixed one bug in blog config where the saved theme is not selected auto
 - Fixed displaying error in blog image config
