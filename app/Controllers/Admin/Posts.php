@@ -57,8 +57,8 @@ class Posts extends AdminController
                     'required' => 'O corpo da postagem é necessário',
                 ],                
             ],						
-			'post-imagem' => [
-                'rules' => 'permit_empty|uploaded[post-imagem]|mime_in[post-imagem,image/png,image/jpg]|ext_in[post-imagem,png,jpg]',
+			'blog-imagem' => [
+                'rules' => 'uploaded[post-imagem]|mime_in[blog-imagem,image/png,image/jpg]|ext_in[blog-imagem,png,jpg]',
                 'errors' => [
                     'uploaded' => 'Não foi possível fazer o upload',
                     'mime_in' => 'Apenas faça upload de arquivos PNG  ou JPG',
@@ -79,7 +79,7 @@ class Posts extends AdminController
 			$id = $this->request->getpost('id');
             $title = $this->request->getpost('title');
             $body = $this->request->getpost('body');
-			$photo_post = $this->request->getFile('post-imagem');
+			$photo_post = $this->request->getFile('blog-imagem');
 			if ($photo_post->isValid() && ! $photo_post->hasMoved()){
                 $newName = $photo_post->getRandomName();
                 if(!$photo_post->move('upload/posts-img/', $newName, true)){

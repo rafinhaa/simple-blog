@@ -29,14 +29,14 @@
 								<div class="form-group">									
 									<label for="SelectColor">Cor</label>
 										<select id="SelectColor" name="theme-color"class="form-control">
-											<option value="1" style="color: #5FCB71;">Verde claro</option>
-											<option value="2" style="color: #5BC3D5;">Azul claro</option>
-											<option value="3" style="color: #3B7EEB;">Azul marinho</option>
-											<option value="4" style="color: #5ECCA9;">Verde limão</option>
-											<option value="5" style="color: #EEA73B;">Laranja</option>
-											<option value="6" style="color: #5469C9;">Roxo</option>
-											<option value="7" style="color: #5D6BA7;">Azul petróleo</option>
-											<option value="8" style="color: #6C51A4;">Rosa escuro</option>
+											<option value="1" <?= isset($config["theme"]) &&  $config["theme"] == 1 ? 'selected' : set_value('theme-color') == 1 ? 'selected' : '' ?> style="color: #5FCB71;">Verde claro</option>
+											<option value="2" <?= isset($config["theme"]) &&  $config["theme"] == 2 ? 'selected' : set_value('theme-color') == 2 ? 'selected' : '' ?> style="color: #5BC3D5;">Azul claro</option>
+											<option value="3" <?= isset($config["theme"]) &&  $config["theme"] == 3 ? 'selected' : set_value('theme-color') == 3 ? 'selected' : '' ?> style="color: #3B7EEB;">Azul marinho</option>
+											<option value="4" <?= isset($config["theme"]) &&  $config["theme"] == 4 ? 'selected' : set_value('theme-color') == 4 ? 'selected' : '' ?> style="color: #5ECCA9;">Verde limão</option>
+											<option value="5" <?= isset($config["theme"]) &&  $config["theme"] == 5 ? 'selected' : set_value('theme-color') == 5 ? 'selected' : '' ?> style="color: #EEA73B;">Laranja</option>
+											<option value="6" <?= isset($config["theme"]) &&  $config["theme"] == 6 ? 'selected' : set_value('theme-color') == 6 ? 'selected' : '' ?> style="color: #5469C9;">Roxo</option>
+											<option value="7" <?= isset($config["theme"]) &&  $config["theme"] == 7 ? 'selected' : set_value('theme-color') == 7 ? 'selected' : '' ?> style="color: #5D6BA7;">Azul petróleo</option>
+											<option value="8" <?= isset($config["theme"]) &&  $config["theme"] == 8 ? 'selected' : set_value('theme-color') == 8 ? 'selected' : '' ?> style="color: #6C51A4;">Rosa escuro</option>
 									</select>
 								</div>					
 							</div>						

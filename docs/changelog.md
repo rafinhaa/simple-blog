@@ -1,3 +1,7 @@
+##### v0.0.45
+- Fixed one bug in blog config where the saved theme is not selected auto
+- Fixed displaying error in blog image config
+- Fixed colspan in View admin/blog/index
 ##### v0.0.44
 - Removed unused files
 ##### v0.0.43

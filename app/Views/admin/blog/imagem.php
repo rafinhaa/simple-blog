@@ -13,24 +13,28 @@
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form action="<?= base_url('admin/users/upload')?>" method="post" enctype="multipart/form-data">
+				<form action="<?= base_url('admin/blog/upload')?>" method="post" enctype="multipart/form-data">
 					<?= csrf_field() ?>
 					<div class="card-body">
 						<div class="row align-items-center">
 							<div class="col-md-6">
-                                <label for="InputFile">Imagem</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="InputFile" name="blog-imagem">
-                                        <label class="custom-file-label" for="InputFile">Escolher</label>
-                                    </div>
-                                    <span class="text-danger"><?= isset($validation) ? display_error($validation, 'blog-imagem') : '' ?></span>
-                                </div>
+								<div class="row">
+									<label for="InputFile">Imagem</label>
+									<div class="input-group">
+										<div class="custom-file">
+											<input type="file" class="custom-file-input" id="InputFile" name="blog-imagem">
+											<label class="custom-file-label" for="InputFile">Escolher</label>
+										</div>										
+									</div>
+								</div>
+								<div class="row">
+									<span class="text-danger"><?= isset($validation) ? display_error($validation, 'blog-imagem') : '' ?></span>
+								</div>
 							</div>
 							<div class="col-md-6 text-center">
                                 <label for="InputFile">Foto atual</label>
                                 <div class="form-group">
-                                    <?php if(file_exists('assets/images/blog-personal-image.png')): ?>
+									<?php if( file_exists(set_realpath('assets/images/blog-personal-image.png'))): ?>
                                         <img class="img-fluid img-thumbnail img-circle" src="<?= base_url('assets/images/blog-personal-image.png') ?>" alt="image" >			
                                     <?php else: ?>
                                         <img class="profile-user-img img-fluid img-circle" src="<?= base_url('assets/images/profile.png') ?>" alt="image" >
