@@ -1,3 +1,5 @@
+##### v0.0.44
+- Removed unused files
 ##### v0.0.43
 - Update README.md
 ##### v0.0.42
