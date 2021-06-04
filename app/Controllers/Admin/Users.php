@@ -203,9 +203,8 @@ class Users extends AdminController
 		}
         $validation = $this->validate([
             'profile-imagem' => [
-                'rules' => 'required|uploaded[profile-imagem]|mime_in[profile-imagem,image/png,image/jpg]|ext_in[profile-imagem,png,jpg]',
+                'rules' => 'uploaded[profile-imagem]|mime_in[profile-imagem,image/png,image/jpg]|ext_in[profile-imagem,png,jpg]',
                 'errors' => [
-                    'required' => 'Você não enviou nenhuma imagem',
                     'uploaded' => 'Não foi possível fazer o upload',
                     'mime_in' => 'Apenas faça upload de arquivos PNG  ou JPG',
                     'ext_in' => 'Extensão da imagem inválida',

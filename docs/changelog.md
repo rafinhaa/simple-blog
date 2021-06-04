@@ -1,3 +1,5 @@
+##### v0.0.47
+- Fixed upload image profile
 ##### v0.0.46
 - Fixed layout in View admin/post/create
 ##### v0.0.45
