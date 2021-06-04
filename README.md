@@ -45,7 +45,7 @@
 </h1>
 
 ## 🔖 About
-O Simple Blog é uma aplicação criado com codeigniter 4, permite o CRUD de noticias e conta com uma autenticação.
+O Simple Blog é uma aplicação criado com codeigniter 4, permite o CRUD de noticias, é possível adicionar novos usuários e edita-los e conta com uma autenticação.
 
 ## 🚀 Technologies
 - [PHP](https://php.net/)
@@ -59,17 +59,19 @@ O Simple Blog é uma aplicação criado com codeigniter 4, permite o CRUD de not
 git clone https://github.com/rafinhaa/simple-blog.git
 cd simple-blog
 ```
-
 #### Install dependencies
 ```bash
 composer install
 ```
-
+#### Create and edit env file
+```bash
+cp env .env
+vi .env
+```
 #### Execute migrations
 ```bash
 php spark migrate
 ```
-
 #### Execute seeders
 ```bash
 php spark db:seed UsersSeeder

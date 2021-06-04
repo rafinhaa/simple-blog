@@ -1,3 +1,5 @@
+##### v0.0.49
+- Update README.md
 ##### v0.0.48
 - Clicking on your username you are now taken to your profile
 ##### v0.0.47
